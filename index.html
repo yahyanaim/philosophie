@@ -1,0 +1,2850 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مدخل إلى الفلسفة — الله، العقل، العالم، والمنطق | نيل تينانت</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Amiri+Quran&family=Cinzel:wght@400;600;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   DESIGN SYSTEM — LUXURY SCHOLARLY DARK
+   ═══════════════════════════════════════════════ */
+:root {
+  --ink:        #0a0806;
+  --parchment:  #f5f0e8;
+  --gold:       #c9a84c;
+  --gold-light: #e8c96a;
+  --gold-dim:   #8a6e2f;
+  --burgundy:   #6b1d2e;
+  --burgundy-l: #9b2d42;
+  --teal:       #1a5f6e;
+  --teal-l:     #2a8a9e;
+  --slate:      #1e1a16;
+  --slate-mid:  #2e2820;
+  --slate-light:#3e3428;
+  --text-main:  #e8e0d0;
+  --text-dim:   #a89880;
+  --text-gold:  #c9a84c;
+  --border:     rgba(201,168,76,0.18);
+  --border-strong: rgba(201,168,76,0.40);
+  --sidebar-w:  320px;
+  --header-h:   72px;
+  --radius:     6px;
+  --shadow-gold: 0 0 40px rgba(201,168,76,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 17px; }
+
+body {
+  background: var(--ink);
+  color: var(--text-main);
+  font-family: 'Amiri', 'Georgia', serif;
+  line-height: 1.9;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ═══ SCROLLBAR ═══ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--slate); }
+::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* ═══ HEADER ═══ */
+#site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-h);
+  background: linear-gradient(180deg, rgba(10,8,6,0.98) 0%, rgba(10,8,6,0.92) 100%);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.header-title {
+  font-family: 'Amiri', serif;
+  font-size: 1.15rem;
+  color: var(--gold);
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+}
+.header-title span {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.header-meta {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+#menu-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--gold);
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+/* ═══ LAYOUT ═══ */
+#layout {
+  display: flex;
+  padding-top: var(--header-h);
+  min-height: 100vh;
+}
+
+/* ═══ SIDEBAR ═══ */
+#sidebar {
+  position: fixed;
+  top: var(--header-h);
+  right: 0;
+  width: var(--sidebar-w);
+  height: calc(100vh - var(--header-h));
+  background: var(--slate);
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 900;
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+}
+
+.sidebar-inner { padding: 1.5rem 0 3rem; }
+
+.sidebar-section {
+  margin-bottom: 0.25rem;
+}
+
+.sidebar-part {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.78rem;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  cursor: pointer;
+  background: rgba(201,168,76,0.06);
+  border-right: 2px solid var(--gold);
+  margin-bottom: 0.15rem;
+  transition: background 0.2s;
+  user-select: none;
+}
+.sidebar-part:hover { background: rgba(201,168,76,0.12); }
+.sidebar-part .part-arrow {
+  margin-left: auto;
+  transition: transform 0.3s;
+  font-size: 0.65rem;
+}
+.sidebar-part.open .part-arrow { transform: rotate(90deg); }
+
+.sidebar-chapters {
+  display: none;
+  padding: 0.2rem 0;
+}
+.sidebar-part.open + .sidebar-chapters { display: block; }
+
+.sidebar-ch {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.45rem 1.4rem 0.45rem 2.5rem;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+  line-height: 1.5;
+  text-decoration: none;
+}
+.sidebar-ch:hover { color: var(--text-main); background: rgba(255,255,255,0.03); }
+.sidebar-ch.active { color: var(--gold-light); background: rgba(201,168,76,0.07); }
+.sidebar-ch .ch-num {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  color: var(--gold-dim);
+  min-width: 1.4rem;
+  margin-top: 0.15rem;
+}
+
+.sidebar-progress {
+  position: sticky;
+  bottom: 0;
+  background: var(--slate);
+  border-top: 1px solid var(--border);
+  padding: 0.75rem 1.4rem;
+}
+.progress-bar {
+  height: 2px;
+  background: var(--slate-light);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+  width: 0%;
+  transition: width 0.3s;
+}
+.progress-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  margin-top: 0.4rem;
+  text-transform: uppercase;
+}
+
+/* ═══ MAIN CONTENT ═══ */
+#main {
+  margin-right: var(--sidebar-w);
+  flex: 1;
+  min-width: 0;
+}
+
+/* ═══ HERO ═══ */
+#hero {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 40%, rgba(201,168,76,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 20% 70%, rgba(107,29,46,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 80% 20%, rgba(26,95,110,0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-ornament {
+  font-size: 2.5rem;
+  color: var(--gold-dim);
+  margin-bottom: 1.5rem;
+  animation: fadeUp 1s ease 0.2s both;
+}
+
+.hero-title {
+  font-family: 'Amiri', serif;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.25;
+  margin-bottom: 0.6rem;
+  animation: fadeUp 1s ease 0.4s both;
+}
+
+.hero-subtitle {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--gold);
+  margin-bottom: 2rem;
+  animation: fadeUp 1s ease 0.6s both;
+}
+
+.hero-author {
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 0.4rem;
+  animation: fadeUp 1s ease 0.8s both;
+}
+
+.hero-divider {
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 1.8rem auto;
+  animation: fadeUp 1s ease 1s both;
+}
+
+.hero-desc {
+  max-width: 640px;
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  line-height: 1.9;
+  animation: fadeUp 1s ease 1.1s both;
+}
+
+.hero-parts-preview {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 1s ease 1.3s both;
+}
+
+.part-pill {
+  padding: 0.45rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  font-family: 'Amiri', serif;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  background: rgba(201,168,76,0.04);
+  transition: all 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+}
+.part-pill:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201,168,76,0.08);
+}
+
+/* ═══ GEOMETRIC HERO SVG ═══ */
+.hero-geometry {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.07;
+}
+
+/* ═══ CONTENT SECTIONS ═══ */
+.book-part {
+  padding: 5rem 4rem 3rem;
+  border-top: 1px solid var(--border);
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+  position: relative;
+}
+
+.part-header {
+  margin-bottom: 3rem;
+}
+
+.part-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.part-label::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--gold-dim);
+}
+
+.part-title-ar {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.25;
+  margin-bottom: 0.4rem;
+}
+
+.part-title-en {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+/* ═══ CHAPTER ═══ */
+.chapter {
+  margin-bottom: 4rem;
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+
+.chapter-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.ch-number {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--gold-dim);
+  line-height: 1;
+  min-width: 2.5rem;
+  text-align: center;
+  margin-top: 0.15rem;
+  opacity: 0.6;
+}
+
+.ch-titles { flex: 1; }
+
+.ch-title-ar {
+  font-family: 'Amiri', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
+}
+.ch-title-en {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.chapter-body {
+  font-size: 1.02rem;
+  color: #ccc5b5;
+  line-height: 2;
+}
+
+.chapter-body p { margin-bottom: 1.1rem; }
+
+.chapter-body p:first-of-type::first-letter {
+  font-family: 'Amiri', serif;
+  font-size: 3.2em;
+  font-weight: 700;
+  float: right;
+  margin-left: 0.12em;
+  margin-top: 0.05em;
+  line-height: 0.85;
+  color: var(--gold);
+}
+
+/* ═══ SUBSECTION ═══ */
+.subsection {
+  margin: 1.8rem 0;
+}
+.sub-title {
+  font-family: 'Amiri', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  margin-bottom: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.sub-title::before {
+  content: '◆';
+  font-size: 0.55rem;
+  color: var(--gold-dim);
+}
+
+/* ═══ KEY CONCEPT BOXES ═══ */
+.concept-box {
+  background: var(--slate-mid);
+  border: 1px solid var(--border);
+  border-right: 3px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0;
+}
+.concept-box.burgundy { border-right-color: var(--burgundy-l); }
+.concept-box.teal     { border-right-color: var(--teal-l); }
+
+.concept-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+.concept-box.burgundy .concept-label { color: var(--burgundy-l); }
+.concept-box.teal .concept-label     { color: var(--teal-l); }
+
+.concept-box p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.85; }
+.concept-box p:last-child { margin-bottom: 0; }
+
+/* ═══ ISMS TABLE ═══ */
+.isms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.ism-card {
+  background: var(--slate-mid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.1rem;
+  transition: border-color 0.25s, background 0.25s;
+}
+.ism-card:hover {
+  border-color: var(--border-strong);
+  background: var(--slate-light);
+}
+.ism-vs {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.25rem;
+}
+.ism-names {
+  font-family: 'Amiri', serif;
+  font-size: 0.92rem;
+  color: var(--text-main);
+  font-weight: 700;
+}
+.ism-en {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-top: 0.2rem;
+}
+
+/* ═══ ARGUMENT BLOCK ═══ */
+.argument-block {
+  background: var(--slate);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0;
+  font-family: 'Amiri', serif;
+}
+.arg-title {
+  font-size: 0.72rem;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.arg-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 0.4rem 0;
+  font-size: 0.97rem;
+  color: var(--text-dim);
+}
+.arg-num {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  color: var(--gold-dim);
+  min-width: 1.6rem;
+  margin-top: 0.1rem;
+}
+.arg-line.conclusion {
+  color: var(--text-main);
+  border-top: 1px solid var(--border);
+  margin-top: 0.4rem;
+  padding-top: 0.7rem;
+}
+.arg-line.conclusion .arg-num { color: var(--gold); }
+
+/* ═══ THOUGHT EXPERIMENT CARDS ═══ */
+.thought-exp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.te-card {
+  background: var(--slate-mid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  cursor: default;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.te-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  border-color: var(--border-strong);
+}
+.te-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.te-name-ar {
+  font-family: 'Amiri', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.2rem;
+}
+.te-name-en {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-bottom: 0.6rem;
+}
+.te-desc {
+  font-size: 0.87rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+/* ═══ DISCUSSION QUESTIONS ═══ */
+.discussion-block {
+  background: rgba(107,29,46,0.12);
+  border: 1px solid rgba(107,29,46,0.3);
+  border-radius: var(--radius);
+  padding: 1.3rem 1.6rem;
+  margin: 2rem 0;
+}
+.discussion-header {
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--burgundy-l);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.discussion-header::before { content: '?'; font-size: 1rem; font-weight: 900; }
+.discussion-list {
+  list-style: none;
+  counter-reset: q-counter;
+}
+.discussion-list li {
+  counter-increment: q-counter;
+  display: flex;
+  gap: 0.8rem;
+  padding: 0.5rem 0;
+  font-size: 0.93rem;
+  color: var(--text-dim);
+  line-height: 1.75;
+  border-bottom: 1px solid rgba(107,29,46,0.15);
+}
+.discussion-list li:last-child { border-bottom: none; }
+.discussion-list li::before {
+  content: counter(q-counter);
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  color: var(--burgundy-l);
+  min-width: 1.4rem;
+  margin-top: 0.15rem;
+  font-weight: 700;
+}
+
+/* ═══ SVG DIAGRAM CONTAINER ═══ */
+.diagram-wrap {
+  margin: 2rem 0;
+  background: var(--slate);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) * 1.5);
+  overflow: hidden;
+}
+.diagram-caption {
+  padding: 0.65rem 1.2rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  border-bottom: 1px solid var(--border);
+  background: rgba(201,168,76,0.04);
+}
+.diagram-body {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+.diagram-body svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ═══ LOGIC SYMBOL BOX ═══ */
+.logic-symbols {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.2rem 0;
+}
+.logic-sym {
+  background: var(--slate-mid);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.5rem 0.9rem;
+  text-align: center;
+  min-width: 80px;
+}
+.ls-sym {
+  font-size: 1.4rem;
+  color: var(--gold);
+  font-family: 'Crimson Pro', serif;
+  display: block;
+  line-height: 1.2;
+}
+.ls-ar {
+  font-family: 'Amiri', serif;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  display: block;
+  margin-top: 0.15rem;
+}
+
+/* ═══ FOOTNOTE ═══ */
+.fn-ref {
+  vertical-align: super;
+  font-size: 0.65em;
+  color: var(--gold-dim);
+  font-family: 'Cinzel', serif;
+  cursor: help;
+}
+
+/* ═══ QUOTE BLOCK ═══ */
+.pull-quote {
+  border-right: 3px solid var(--gold);
+  padding: 0.8rem 1.4rem;
+  margin: 1.8rem 2rem;
+  font-family: 'Amiri', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  line-height: 1.85;
+  position: relative;
+}
+.pull-quote::before {
+  content: '❝';
+  position: absolute;
+  top: -0.5rem;
+  right: -0.1rem;
+  font-size: 2.5rem;
+  color: var(--gold-dim);
+  font-style: normal;
+  opacity: 0.3;
+}
+
+/* ═══ APPENDIX ═══ */
+.appendix-section {
+  padding: 3rem 4rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ═══ FOOTER ═══ */
+footer {
+  padding: 3rem 4rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.footer-ornament {
+  font-size: 1.8rem;
+  color: var(--gold-dim);
+  margin-bottom: 1rem;
+}
+.footer-text {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  line-height: 2;
+}
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes rotateIn {
+  from { transform: rotate(-90deg) scale(0.7); opacity: 0; }
+  to   { transform: rotate(0deg) scale(1); opacity: 1; }
+}
+@keyframes drawLine {
+  from { stroke-dashoffset: 1000; }
+  to   { stroke-dashoffset: 0; }
+}
+@keyframes pulse-gold {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+.anim-fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.anim-fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 900px) {
+  :root { --sidebar-w: 0px; }
+  #sidebar {
+    width: 290px;
+    transform: translateX(100%);
+  }
+  #sidebar.open {
+    transform: translateX(0);
+    box-shadow: -20px 0 60px rgba(0,0,0,0.5);
+  }
+  #main { margin-right: 0; }
+  #menu-toggle { display: block; }
+  .book-part { padding: 3rem 1.5rem; }
+  .appendix-section { padding: 2rem 1.5rem; }
+  footer { padding: 2rem 1.5rem; }
+  .thought-exp-grid { grid-template-columns: 1fr; }
+  .isms-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .hero-title { font-size: 2rem; }
+  .part-title-ar { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header id="site-header">
+  <div class="header-title">
+    مدخل إلى الفلسفة
+    <span>Introducing Philosophy · Neil Tennant · 2015</span>
+  </div>
+  <div class="header-meta">دليل القراءة العربي</div>
+  <button id="menu-toggle" onclick="toggleSidebar()" aria-label="القائمة">☰</button>
+</header>
+
+<!-- ═══════════ LAYOUT ═══════════ -->
+<div id="layout">
+
+<!-- ═══════════ SIDEBAR ═══════════ -->
+<nav id="sidebar">
+  <div class="sidebar-inner">
+
+    <div class="sidebar-section">
+      <div class="sidebar-part open" onclick="togglePart(this)">
+        <span>الجزء الأول</span>
+        <span style="font-size:0.65rem;color:var(--text-dim);margin-right:auto;margin-left:0.5rem">طبيعة الفلسفة</span>
+        <span class="part-arrow">▶</span>
+      </div>
+      <div class="sidebar-chapters">
+        <a href="#ch1" class="sidebar-ch"><span class="ch-num">١</span>السمات الرئيسية للفلسفة</a>
+        <a href="#ch2" class="sidebar-ch"><span class="ch-num">٢</span>تاريخ الفلسفة وإرثها</a>
+        <a href="#ch3" class="sidebar-ch"><span class="ch-num">٣</span>الطبع الفلسفي</a>
+        <a href="#ch4" class="sidebar-ch"><span class="ch-num">٤</span>مفاهيم وتمييزات جوهرية</a>
+        <a href="#ch5" class="sidebar-ch"><span class="ch-num">٥</span>تمييزا كانط</a>
+        <a href="#ch6" class="sidebar-ch"><span class="ch-num">٦</span>المذاهب الفلسفية المتعارضة</a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-part" onclick="togglePart(this)">
+        <span>الجزء الثاني</span>
+        <span style="font-size:0.65rem;color:var(--text-dim);margin-right:auto;margin-left:0.5rem">الفلسفة والمنهج</span>
+        <span class="part-arrow">▶</span>
+      </div>
+      <div class="sidebar-chapters">
+        <a href="#ch7" class="sidebar-ch"><span class="ch-num">٧</span>ما هو المنطق؟</a>
+        <a href="#ch8" class="sidebar-ch"><span class="ch-num">٨</span>الاستدلال الاستقرائي</a>
+        <a href="#ch9" class="sidebar-ch"><span class="ch-num">٩</span>منهج التحليل المفهومي</a>
+        <a href="#ch10" class="sidebar-ch"><span class="ch-num">١٠</span>منهج الشرح المفهومي</a>
+        <a href="#ch11" class="sidebar-ch"><span class="ch-num">١١</span>منهج التجربة الفكرية</a>
+        <a href="#ch12" class="sidebar-ch"><span class="ch-num">١٢</span>الإبداع الفكري والصرامة</a>
+        <a href="#ch13" class="sidebar-ch"><span class="ch-num">١٣</span>الاستنباط في الرياضيات والعلوم</a>
+        <a href="#ch14" class="sidebar-ch"><span class="ch-num">١٤</span>مسألة الاختزالية المنهجية</a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-part" onclick="togglePart(this)">
+        <span>الجزء الثالث</span>
+        <span style="font-size:0.65rem;color:var(--text-dim);margin-right:auto;margin-left:0.5rem">وجود الله</span>
+        <span class="part-arrow">▶</span>
+      </div>
+      <div class="sidebar-chapters">
+        <a href="#ch15" class="sidebar-ch"><span class="ch-num">١٥</span>الحجج القبلية على وجود الله</a>
+        <a href="#ch16" class="sidebar-ch"><span class="ch-num">١٦</span>حجة التصميم</a>
+        <a href="#ch17" class="sidebar-ch"><span class="ch-num">١٧</span>حجة الخلق المعاصر</a>
+        <a href="#ch18" class="sidebar-ch"><span class="ch-num">١٨</span>رهان باسكال</a>
+        <a href="#ch19" class="sidebar-ch"><span class="ch-num">١٩</span>مشكلة الشر</a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-part" onclick="togglePart(this)">
+        <span>الجزء الرابع</span>
+        <span style="font-size:0.65rem;color:var(--text-dim);margin-right:auto;margin-left:0.5rem">العقل، الجسد، والعالم</span>
+        <span class="part-arrow">▶</span>
+      </div>
+      <div class="sidebar-chapters">
+        <a href="#ch20" class="sidebar-ch"><span class="ch-num">٢٠</span>ديكارت: الثنائية والشكوكية</a>
+        <a href="#ch21" class="sidebar-ch"><span class="ch-num">٢١</span>مشكلات العقل</a>
+        <a href="#ch22" class="sidebar-ch"><span class="ch-num">٢٢</span>الثنائية مقابل السلوكية المنطقية</a>
+        <a href="#ch23" class="sidebar-ch"><span class="ch-num">٢٣</span>المادية والتراتبية</a>
+        <a href="#ch24" class="sidebar-ch"><span class="ch-num">٢٤</span>الوظيفانية</a>
+        <a href="#ch25" class="sidebar-ch"><span class="ch-num">٢٥</span>الإرادة الحرة مقابل الحتمية</a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-part" onclick="togglePart(this)">
+        <span>الجزء الخامس</span>
+        <span style="font-size:0.65rem;color:var(--text-dim);margin-right:auto;margin-left:0.5rem">التمثيل والاستدلال</span>
+        <span class="part-arrow">▶</span>
+      </div>
+      <div class="sidebar-chapters">
+        <a href="#ch26" class="sidebar-ch"><span class="ch-num">٢٦</span>التمثيل والتقييم</a>
+        <a href="#ch27" class="sidebar-ch"><span class="ch-num">٢٧</span>من التقييم إلى الاستنباط</a>
+        <a href="#ch28" class="sidebar-ch"><span class="ch-num">٢٨</span>المفارقات</a>
+        <a href="#ch29" class="sidebar-ch"><span class="ch-num">٢٩</span>الوصف مقابل الاستنباط</a>
+        <a href="#ch30" class="sidebar-ch"><span class="ch-num">٣٠</span>عدم اكتمال الحساب</a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-part" onclick="togglePart(this)">
+        <span>الملاحق</span>
+        <span style="font-size:0.65rem;color:var(--text-dim);margin-right:auto;margin-left:0.5rem">Appendices</span>
+        <span class="part-arrow">▶</span>
+      </div>
+      <div class="sidebar-chapters">
+        <a href="#appA" class="sidebar-ch"><span class="ch-num">أ</span>تاريخ الفلسفة الغربية</a>
+        <a href="#appB" class="sidebar-ch"><span class="ch-num">ب</span>نظرية الاحتمال</a>
+      </div>
+    </div>
+
+  </div>
+  <div class="sidebar-progress">
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="progress-label">تقدم القراءة</div>
+  </div>
+</nav>
+
+<!-- ═══════════ MAIN ═══════════ -->
+<main id="main">
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+
+  <!-- Islamic geometric background pattern -->
+  <svg class="hero-geometry" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <pattern id="hexPat" x="0" y="0" width="80" height="69.3" patternUnits="userSpaceOnUse">
+        <polygon points="40,0 80,20 80,60 40,80 0,60 0,20" fill="none" stroke="#c9a84c" stroke-width="0.5"/>
+        <line x1="40" y1="0" x2="40" y2="80" stroke="#c9a84c" stroke-width="0.3"/>
+        <line x1="0" y1="40" x2="80" y2="40" stroke="#c9a84c" stroke-width="0.3"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#hexPat)"/>
+    <circle cx="400" cy="300" r="200" fill="none" stroke="#c9a84c" stroke-width="0.8"/>
+    <circle cx="400" cy="300" r="140" fill="none" stroke="#c9a84c" stroke-width="0.5"/>
+    <circle cx="400" cy="300" r="80" fill="none" stroke="#c9a84c" stroke-width="0.4"/>
+    <polygon points="400,100 574,200 574,400 400,500 226,400 226,200" fill="none" stroke="#c9a84c" stroke-width="0.7"/>
+    <polygon points="400,160 510,220 510,380 400,440 290,380 290,220" fill="none" stroke="#c9a84c" stroke-width="0.5"/>
+  </svg>
+
+  <div class="hero-ornament">✦ ✦ ✦</div>
+  <h1 class="hero-title">مدخل إلى الفلسفة</h1>
+  <div class="hero-subtitle">الله، العقل، العالم، والمنطق</div>
+  <div class="hero-author">نيل تينانت · Neil Tennant</div>
+  <div class="hero-author" style="margin-top:0.2rem">أستاذ متميّز في الإنسانيات — جامعة أوهايو الحكومية · 2015</div>
+  <div class="hero-divider"></div>
+  <p class="hero-desc">
+    دليل قراءة عربي شامل يرافق كتاب «مدخل إلى الفلسفة» — يستعرض المشكلات الفلسفية الكبرى وأساليب معالجتها،
+    من طبيعة الفلسفة ومناهجها، إلى وجود الله، وفلسفة العقل والجسد، ووصولاً إلى المنطق والمفارقات.
+  </p>
+  <div class="hero-parts-preview">
+    <a href="#part1" class="part-pill">طبيعة الفلسفة</a>
+    <a href="#part2" class="part-pill">الفلسفة والمنهج</a>
+    <a href="#part3" class="part-pill">وجود الله</a>
+    <a href="#part4" class="part-pill">العقل والجسد</a>
+    <a href="#part5" class="part-pill">التمثيل والاستدلال</a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PART I — NATURE OF PHILOSOPHY
+══════════════════════════════════════════ -->
+<section class="book-part" id="part1">
+  <div class="part-header anim-fade-up">
+    <div class="part-label">الجزء الأول</div>
+    <div class="part-title-ar">طبيعة الفلسفة</div>
+    <div class="part-title-en">The Nature of Philosophy</div>
+  </div>
+
+  <!-- CHAPTER 1 -->
+  <article class="chapter anim-fade-up" id="ch1">
+    <div class="chapter-header">
+      <div class="ch-number">١</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">السمات الرئيسية للفلسفة</div>
+        <div class="ch-title-en">The Main Features of Philosophy</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        تُعدّ الفلسفة من أقدم المساعي الفكرية الإنسانية وأعمقها؛ إذ تتجاوز حدود العلوم التجريبية لتطرح تساؤلات جذرية حول الوجود والمعرفة والقيمة والمنطق. يُعرّف تينانت الفلسفة بوصفها تخصصاً مفاهيمياً وتأملياً في جوهره، يسعى إلى تحليل الأفكار الأساسية وتوضيحها، لا مجرد وصف الظواهر التجريبية.
+      </p>
+
+      <!-- SVG: Areas of Philosophy -->
+      <div class="diagram-wrap">
+        <div class="diagram-caption">مخطط — مجالات الفلسفة الرئيسية</div>
+        <div class="diagram-body">
+          <svg viewBox="0 0 620 380" xmlns="http://www.w3.org/2000/svg" width="620" height="380">
+            <defs>
+              <radialGradient id="centerGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#c9a84c" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <!-- Center -->
+            <circle cx="310" cy="190" r="52" fill="url(#centerGrad)" stroke="#c9a84c" stroke-width="1.5"/>
+            <text x="310" y="185" text-anchor="middle" font-family="Amiri,serif" font-size="16" fill="#c9a84c" font-weight="700">الفلسفة</text>
+            <text x="310" y="202" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#8a6e2f" letter-spacing="1">PHILOSOPHY</text>
+
+            <!-- Branches -->
+            <!-- Metaphysics top -->
+            <line x1="310" y1="138" x2="310" y2="82" stroke="#c9a84c" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+            <circle cx="310" cy="65" r="38" fill="#1e1a16" stroke="#c9a84c" stroke-width="1.2"/>
+            <text x="310" y="61" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#e8e0d0">الميتافيزيقا</text>
+            <text x="310" y="75" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="#8a6e2f">Metaphysics</text>
+
+            <!-- Epistemology top-right -->
+            <line x1="348" y1="152" x2="432" y2="102" stroke="#6b1d2e" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+            <circle cx="462" cy="88" r="42" fill="#1e1a16" stroke="#9b2d42" stroke-width="1.2"/>
+            <text x="462" y="83" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#e8e0d0">نظرية المعرفة</text>
+            <text x="462" y="97" text-anchor="middle" font-family="Cinzel,serif" font-size="7" fill="#9b2d42">Epistemology</text>
+
+            <!-- Logic right -->
+            <line x1="362" y1="190" x2="430" y2="190" stroke="#1a5f6e" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+            <circle cx="468" cy="190" r="38" fill="#1e1a16" stroke="#2a8a9e" stroke-width="1.2"/>
+            <text x="468" y="186" text-anchor="middle" font-family="Amiri,serif" font-size="14" fill="#e8e0d0">المنطق</text>
+            <text x="468" y="200" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="#2a8a9e">Logic</text>
+
+            <!-- Ethics bottom-right -->
+            <line x1="348" y1="228" x2="432" y2="278" stroke="#6b1d2e" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+            <circle cx="462" cy="292" r="38" fill="#1e1a16" stroke="#9b2d42" stroke-width="1.2"/>
+            <text x="462" y="288" text-anchor="middle" font-family="Amiri,serif" font-size="14" fill="#e8e0d0">الأخلاق</text>
+            <text x="462" y="302" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="#9b2d42">Ethics</text>
+
+            <!-- Aesthetics bottom -->
+            <line x1="310" y1="242" x2="310" y2="300" stroke="#c9a84c" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+            <circle cx="310" cy="318" r="35" fill="#1e1a16" stroke="#c9a84c" stroke-width="1.2"/>
+            <text x="310" y="314" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#e8e0d0">علم الجمال</text>
+            <text x="310" y="328" text-anchor="middle" font-family="Cinzel,serif" font-size="7" fill="#8a6e2f">Aesthetics</text>
+
+            <!-- Aesthetics bottom-left -->
+            <line x1="272" y1="228" x2="188" y2="278" stroke="#1a5f6e" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+            <circle cx="158" cy="292" r="40" fill="#1e1a16" stroke="#2a8a9e" stroke-width="1.2"/>
+            <text x="158" y="287" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#e8e0d0">فلسفة الدين</text>
+            <text x="158" y="301" text-anchor="middle" font-family="Cinzel,serif" font-size="6.5" fill="#2a8a9e">Phil. of Religion</text>
+
+            <!-- Logic left -->
+            <line x1="258" y1="190" x2="190" y2="190" stroke="#c9a84c" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+            <circle cx="152" cy="190" r="40" fill="#1e1a16" stroke="#c9a84c" stroke-width="1.2"/>
+            <text x="152" y="185" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#e8e0d0">فلسفة العقل</text>
+            <text x="152" y="199" text-anchor="middle" font-family="Cinzel,serif" font-size="6.5" fill="#8a6e2f">Phil. of Mind</text>
+
+            <!-- top-left -->
+            <line x1="272" y1="152" x2="188" y2="102" stroke="#6b1d2e" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+            <circle cx="158" cy="88" r="40" fill="#1e1a16" stroke="#9b2d42" stroke-width="1.2"/>
+            <text x="158" y="83" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#e8e0d0">فلسفة العلوم</text>
+            <text x="158" y="97" text-anchor="middle" font-family="Cinzel,serif" font-size="6.5" fill="#9b2d42">Phil. of Science</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="sub-title">١·١ — الميتافيزيقا</div>
+        <p>
+          تبحث الميتافيزيقا في الطبيعة الجوهرية للواقع: ما الذي يوجد؟ وكيف يوجد؟ وما العلاقة بين الجسد والعقل، والمادة والزمن والفضاء؟ إنها الفلسفة الأولى بتعبير أرسطو، المعنية بما وراء المادة المحسوسة.
+        </p>
+      </div>
+      <div class="subsection">
+        <div class="sub-title">١·٢ — نظرية المعرفة (الإبستيمولوجيا)</div>
+        <p>
+          تتناول نظرية المعرفة ماهيةَ العلم وحدوده وأسسه: ما المعرفة؟ وكيف نعرف؟ وما الفرق بين العلم والاعتقاد المجرد؟ من أبرز مسائلها: هل يمكن الشك في كل شيء؟ وهل ثمة يقين مطلق ممكن؟
+        </p>
+      </div>
+      <div class="subsection">
+        <div class="sub-title">١·٣ — المنطق</div>
+        <p>
+          المنطق هو دراسة قواعد الاستدلال الصحيح؛ يحدد شروط الانتقال الصالح من مقدمات إلى نتائج. يُميّز بين الاستدلال الاستنباطي (الضروري) والاستدلال الاستقرائي (الاحتمالي).
+        </p>
+      </div>
+      <div class="subsection">
+        <div class="sub-title">١·٤ — الأخلاق</div>
+        <p>
+          تسأل الأخلاق: ما الصواب والخطأ؟ وما الخير والشر؟ كيف ينبغي أن يعيش الإنسان؟ وتتفرّع منها فلسفة القانون والفلسفة السياسية والفلسفة الاجتماعية.
+        </p>
+      </div>
+      <div class="subsection">
+        <div class="sub-title">١·٥ — علم الجمال</div>
+        <p>
+          يدرس علم الجمال تجربة الجمال والفن والذوق، ويسأل: ما الجمال؟ وهل الجمال موضوعي أم ذاتي؟ وما الذي يُميّز الفن العظيم؟
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- CHAPTER 2 -->
+  <article class="chapter anim-fade-up" id="ch2">
+    <div class="chapter-header">
+      <div class="ch-number">٢</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">تاريخ الفلسفة وإرثها</div>
+        <div class="ch-title-en">Philosophy's History and Legacy</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        تمتد الفلسفة الغربية عبر أكثر من ألفين وخمسمائة سنة، من ملطية اليونانية إلى جامعات القرن الحادي والعشرين. وفي هذا الامتداد الزمني تتشكّل ثلاثة أحقاب كبرى تحمل كلٌّ منها روحها الخاصة وأسئلتها المميّزة.
+      </p>
+
+      <!-- Timeline SVG -->
+      <div class="diagram-wrap">
+        <div class="diagram-caption">خط زمني — مراحل الفلسفة الغربية</div>
+        <div class="diagram-body">
+          <svg viewBox="0 0 660 200" xmlns="http://www.w3.org/2000/svg" width="660" height="200">
+            <!-- Main timeline line -->
+            <line x1="30" y1="100" x2="630" y2="100" stroke="#3e3428" stroke-width="2"/>
+            <!-- Arrow -->
+            <polygon points="630,95 645,100 630,105" fill="#c9a84c"/>
+
+            <!-- Ancient -->
+            <line x1="80" y1="100" x2="80" y2="60" stroke="#c9a84c" stroke-width="1.2"/>
+            <circle cx="80" cy="100" r="5" fill="#c9a84c"/>
+            <text x="80" y="50" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">600 BC</text>
+            <text x="80" y="38" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#e8e0d0">الفلسفة القديمة</text>
+
+            <!-- Socrates -->
+            <line x1="160" y1="100" x2="160" y2="130" stroke="#9b2d42" stroke-width="1"/>
+            <circle cx="160" cy="100" r="4" fill="#9b2d42"/>
+            <text x="160" y="145" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#9b2d42">سقراط</text>
+
+            <!-- Aristotle -->
+            <line x1="220" y1="100" x2="220" y2="65" stroke="#c9a84c" stroke-width="1"/>
+            <circle cx="220" cy="100" r="4" fill="#c9a84c"/>
+            <text x="220" y="58" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#c9a84c">أرسطو</text>
+
+            <!-- Medieval -->
+            <line x1="310" y1="100" x2="310" y2="130" stroke="#2a8a9e" stroke-width="1.2"/>
+            <circle cx="310" cy="100" r="5" fill="#2a8a9e"/>
+            <text x="310" y="145" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#2a8a9e">1000 AD</text>
+            <text x="310" y="158" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#e8e0d0">الفلسفة الوسيطة</text>
+
+            <!-- Descartes -->
+            <line x1="400" y1="100" x2="400" y2="65" stroke="#c9a84c" stroke-width="1"/>
+            <circle cx="400" cy="100" r="4" fill="#c9a84c"/>
+            <text x="400" y="58" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#c9a84c">ديكارت</text>
+
+            <!-- Kant -->
+            <line x1="460" y1="100" x2="460" y2="130" stroke="#9b2d42" stroke-width="1"/>
+            <circle cx="460" cy="100" r="4" fill="#9b2d42"/>
+            <text x="460" y="145" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#9b2d42">كانط</text>
+
+            <!-- Modern -->
+            <line x1="540" y1="100" x2="540" y2="65" stroke="#c9a84c" stroke-width="1.2"/>
+            <circle cx="540" cy="100" r="5" fill="#c9a84c"/>
+            <text x="540" y="58" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">1900+</text>
+            <text x="540" y="46" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#e8e0d0">الفلسفة الحديثة</text>
+
+            <!-- Labels at bottom -->
+            <rect x="30" y="168" width="120" height="22" rx="3" fill="#1e1a16" stroke="#c9a84c" stroke-width="0.5"/>
+            <text x="90" y="183" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#c9a84c">يونانية-رومانية</text>
+
+            <rect x="255" y="168" width="115" height="22" rx="3" fill="#1e1a16" stroke="#2a8a9e" stroke-width="0.5"/>
+            <text x="313" y="183" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#2a8a9e">مسيحية-إسلامية</text>
+
+            <rect x="455" y="168" width="120" height="22" rx="3" fill="#1e1a16" stroke="#9b2d42" stroke-width="0.5"/>
+            <text x="515" y="183" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#9b2d42">تحليلية-قارية</text>
+          </svg>
+        </div>
+      </div>
+
+      <p>
+        أسهمت الحضارة الإسلامية إسهاماً بالغاً في نقل الإرث الأرسطي وتطويره؛ فكان ابن رشد (الشارح الأكبر) وابن سينا وابن طفيل جسوراً حضارية بين اليونان والغرب المتأخر. وقد شكّل هذا النقل أساساً لنهضة الفلسفة الغربية في عصر التنوير.
+      </p>
+    </div>
+  </article>
+
+  <!-- CHAPTER 3 -->
+  <article class="chapter anim-fade-up" id="ch3">
+    <div class="chapter-header">
+      <div class="ch-number">٣</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">الطبع الفلسفي</div>
+        <div class="ch-title-en">The Philosophical Temperament</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        لا تكفي المعرفة وحدها لصنع فيلسوف؛ إذ يتطلب الفكر الفلسفي الأصيل طبعاً خاصاً من الصبر والشك والانفتاح. يُحدّد تينانت جملةً من الفضائل الفكرية اللازمة لممارسة الفلسفة بصدق وعمق.
+      </p>
+
+      <div class="concept-box">
+        <div class="concept-label">مفهوم محوري — الواقعية مقابل اللاواقعية</div>
+        <p>
+          يُعدّ النزاع بين <strong style="color:var(--text-main)">الواقعية</strong> و<strong style="color:var(--text-main)">اللاواقعية</strong> من أعمق النزاعات الفلسفية. الواقعي يرى أن ثمة حقائق مستقلة عن العقل والملاحظة؛ أما اللاواقعي فيرى أن الحقيقة ترتبط ارتباطاً جوهرياً بقدراتنا المعرفية أو بممارساتنا اللغوية. وهذا الخط الفاصل يجري عبر كل فروع الفلسفة: الرياضيات، الأخلاق، الدين، العلوم.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <div class="sub-title">٣·١ — الفلسفة والمغالطات المنطقية</div>
+      </div>
+
+      <p>يُنبّه تينانت إلى أن الفكر الفلسفي الجيد يستلزم القدرة على رصد المغالطات وتجنّبها. من أبرز المغالطات الشائعة:</p>
+
+      <!-- Fallacies SVG -->
+      <div class="diagram-wrap">
+        <div class="diagram-caption">أبرز المغالطات المنطقية الشائعة</div>
+        <div class="diagram-body">
+          <svg viewBox="0 0 580 300" xmlns="http://www.w3.org/2000/svg" width="580" height="300">
+            <defs>
+              <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="#c9a84c" opacity="0.6"/>
+              </marker>
+            </defs>
+            <!-- Header -->
+            <text x="290" y="25" text-anchor="middle" font-family="Amiri,serif" font-size="15" fill="#c9a84c" font-weight="700">المغالطات المنطقية</text>
+
+            <!-- Boxes -->
+            <!-- Ad hominem -->
+            <rect x="20" y="45" width="160" height="65" rx="4" fill="#2e2820" stroke="#6b1d2e" stroke-width="1"/>
+            <text x="100" y="70" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#e8e0d0" font-weight="700">مغالطة الرجل</text>
+            <text x="100" y="86" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#ccc5b5">Ad Hominem</text>
+            <text x="100" y="103" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">الهجوم على الشخص لا الحجة</text>
+
+            <!-- Straw man -->
+            <rect x="210" y="45" width="160" height="65" rx="4" fill="#2e2820" stroke="#9b2d42" stroke-width="1"/>
+            <text x="290" y="70" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#e8e0d0" font-weight="700">رجل القش</text>
+            <text x="290" y="86" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#ccc5b5">Straw Man</text>
+            <text x="290" y="103" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">تشويه الحجة ثم دحضها</text>
+
+            <!-- False dilemma -->
+            <rect x="400" y="45" width="160" height="65" rx="4" fill="#2e2820" stroke="#c9a84c" stroke-width="1"/>
+            <text x="480" y="70" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#e8e0d0" font-weight="700">الثنائية الزائفة</text>
+            <text x="480" y="86" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#ccc5b5">False Dilemma</text>
+            <text x="480" y="103" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">حصر الخيارات بلا مسوّغ</text>
+
+            <!-- Slippery slope -->
+            <rect x="20" y="145" width="160" height="65" rx="4" fill="#2e2820" stroke="#2a8a9e" stroke-width="1"/>
+            <text x="100" y="170" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#e8e0d0" font-weight="700">المنحدر الزلق</text>
+            <text x="100" y="186" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#ccc5b5">Slippery Slope</text>
+            <text x="100" y="203" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">سلسلة عواقب غير مسوّغة</text>
+
+            <!-- Circular -->
+            <rect x="210" y="145" width="160" height="65" rx="4" fill="#2e2820" stroke="#c9a84c" stroke-width="1"/>
+            <text x="290" y="170" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#e8e0d0" font-weight="700">المصادرة على المطلوب</text>
+            <text x="290" y="186" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#ccc5b5">Begging the Question</text>
+            <text x="290" y="203" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">افتراض ما يُستدلّ عليه</text>
+
+            <!-- Appeal to authority -->
+            <rect x="400" y="145" width="160" height="65" rx="4" fill="#2e2820" stroke="#9b2d42" stroke-width="1"/>
+            <text x="480" y="170" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#e8e0d0" font-weight="700">التسليم للسلطة</text>
+            <text x="480" y="186" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#ccc5b5">Appeal to Authority</text>
+            <text x="480" y="203" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">اعتماد السلطة بلا دليل</text>
+
+            <!-- Bottom note -->
+            <rect x="160" y="240" width="260" height="40" rx="4" fill="rgba(201,168,76,0.07)" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+            <text x="290" y="258" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#c9a84c">التفكير الفلسفي الجيد يبدأ بتجنّب هذه المغالطات</text>
+            <text x="290" y="273" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">Good philosophy begins with avoiding fallacies</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="discussion-block">
+      <div class="discussion-header">أسئلة للنقاش والتأمل</div>
+      <ul class="discussion-list">
+        <li>هل يمكن أن يكون الإنسان فيلسوفاً حقيقياً إذا كان يفتقر إلى الشك المنهجي؟</li>
+        <li>ما الفرق بين الموقف الفلسفي والموقف العلمي في مواجهة نفس المسألة؟</li>
+        <li>كيف يمكن للمرء أن يتبنى موقفاً فلسفياً دون الوقوع في الدوغمائية؟</li>
+        <li>هل الحياد الكامل في الفلسفة ممكن أم مجرد وهم؟</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- CHAPTER 4 -->
+  <article class="chapter anim-fade-up" id="ch4">
+    <div class="chapter-header">
+      <div class="ch-number">٤</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">مفاهيم وتمييزات جوهرية</div>
+        <div class="ch-title-en">Important Concepts and Distinctions</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        تُشكّل التمييزات المفاهيمية الدقيقة العمودَ الفقري للتفكير الفلسفي؛ إذ كثيراً ما ينشأ الخلط الفكري من عدم التمييز بين مفاهيم متقاربة. يرسم تينانت هنا خريطة مفاهيمية أساسية يحتاجها كل طالب فلسفة.
+      </p>
+
+      <!-- Distinctions diagram -->
+      <div class="diagram-wrap">
+        <div class="diagram-caption">خريطة التمييزات الفلسفية الجوهرية</div>
+        <div class="diagram-body">
+          <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" width="640" height="360">
+            <!-- Grid of distinctions -->
+            <!-- Row 1 -->
+            <g transform="translate(20,20)">
+              <rect width="180" height="60" rx="4" fill="#2e2820" stroke="#c9a84c" stroke-width="1"/>
+              <text x="90" y="22" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#c9a84c" font-weight="700">الظاهر / الحقيقة</text>
+              <text x="90" y="38" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">Appearance / Reality</text>
+              <text x="90" y="53" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">ما يُرى ≠ ما هو كائن</text>
+            </g>
+            <g transform="translate(230,20)">
+              <rect width="180" height="60" rx="4" fill="#2e2820" stroke="#9b2d42" stroke-width="1"/>
+              <text x="90" y="22" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#9b2d42" font-weight="700">العقل / الجسد</text>
+              <text x="90" y="38" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#6b1d2e">Mind / Body</text>
+              <text x="90" y="53" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">التقسيم الديكارتي الكبير</text>
+            </g>
+            <g transform="translate(440,20)">
+              <rect width="180" height="60" rx="4" fill="#2e2820" stroke="#2a8a9e" stroke-width="1"/>
+              <text x="90" y="22" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#2a8a9e" font-weight="700">الموضوعي / الذاتي</text>
+              <text x="90" y="38" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#1a5f6e">Objective / Subjective</text>
+              <text x="90" y="53" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">مستقل عن العقل / تابع له</text>
+            </g>
+            <!-- Row 2 -->
+            <g transform="translate(20,110)">
+              <rect width="180" height="60" rx="4" fill="#2e2820" stroke="#c9a84c" stroke-width="1"/>
+              <text x="90" y="22" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#c9a84c" font-weight="700">المجرد / الملموس</text>
+              <text x="90" y="38" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">Abstract / Concrete</text>
+              <text x="90" y="53" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">الأعداد مقابل الأشجار</text>
+            </g>
+            <g transform="translate(230,110)">
+              <rect width="180" height="60" rx="4" fill="#2e2820" stroke="#9b2d42" stroke-width="1"/>
+              <text x="90" y="22" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#9b2d42" font-weight="700">الوصفي / المعياري</text>
+              <text x="90" y="38" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#6b1d2e">Descriptive / Normative</text>
+              <text x="90" y="53" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">ما هو كائن / ما ينبغي أن يكون</text>
+            </g>
+            <g transform="translate(440,110)">
+              <rect width="180" height="60" rx="4" fill="#2e2820" stroke="#2a8a9e" stroke-width="1"/>
+              <text x="90" y="22" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#2a8a9e" font-weight="700">التجريبي / العقلاني</text>
+              <text x="90" y="38" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#1a5f6e">Empirical / Rational</text>
+              <text x="90" y="53" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">التجربة / العقل مصدراً</text>
+            </g>
+            <!-- Row 3 -->
+            <g transform="translate(20,200)">
+              <rect width="180" height="60" rx="4" fill="#2e2820" stroke="#c9a84c" stroke-width="1"/>
+              <text x="90" y="22" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#c9a84c" font-weight="700">الضروري / الممكن</text>
+              <text x="90" y="38" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">Necessary / Contingent</text>
+              <text x="90" y="53" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">لا يمكن إلا أن يكون / قد لا يكون</text>
+            </g>
+            <g transform="translate(230,200)">
+              <rect width="180" height="60" rx="4" fill="#2e2820" stroke="#9b2d42" stroke-width="1"/>
+              <text x="90" y="22" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#9b2d42" font-weight="700">الاستنباطي / الاستقرائي</text>
+              <text x="90" y="38" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#6b1d2e">Deductive / Inductive</text>
+              <text x="90" y="53" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">ضرورة منطقية / احتمال</text>
+            </g>
+            <g transform="translate(440,200)">
+              <rect width="180" height="60" rx="4" fill="#2e2820" stroke="#2a8a9e" stroke-width="1"/>
+              <text x="90" y="22" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#2a8a9e" font-weight="700">النظرية / الدليل</text>
+              <text x="90" y="38" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#1a5f6e">Theory / Evidence</text>
+              <text x="90" y="53" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">الإطار التفسيري / الشواهد</text>
+            </g>
+            <!-- Connecting line at bottom -->
+            <line x1="20" y1="300" x2="620" y2="300" stroke="rgba(201,168,76,0.15)" stroke-width="1" stroke-dasharray="5,5"/>
+            <text x="320" y="325" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#8a6e2f">الإتقان الفلسفي رهين بالتمييز الدقيق بين هذه المفاهيم</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- CHAPTER 5 -->
+  <article class="chapter anim-fade-up" id="ch5">
+    <div class="chapter-header">
+      <div class="ch-number">٥</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">تمييزا كانط الكبيران</div>
+        <div class="ch-title-en">Kant's Two Distinctions</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        وضع إيمانويل كانط (١٧٢٤–١٨٠٤) تمييزين محوريين غيّرا مسار الفلسفة الغربية للأبد: التمييز بين المعرفة القَبلية والبَعدية، والتمييز بين القضايا التحليلية والتركيبية.
+      </p>
+
+      <!-- Kant's grid SVG -->
+      <div class="diagram-wrap">
+        <div class="diagram-caption">مصفوفة كانط — تقاطع التمييزين</div>
+        <div class="diagram-body">
+          <svg viewBox="0 0 540 320" xmlns="http://www.w3.org/2000/svg" width="540" height="320">
+            <!-- Title -->
+            <text x="270" y="25" text-anchor="middle" font-family="Amiri,serif" font-size="14" fill="#c9a84c">مصفوفة كانط المفاهيمية</text>
+
+            <!-- Column headers -->
+            <rect x="170" y="40" width="160" height="42" rx="3" fill="rgba(201,168,76,0.1)" stroke="#c9a84c" stroke-width="1"/>
+            <text x="250" y="57" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#c9a84c" font-weight="700">تحليلية</text>
+            <text x="250" y="73" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">Analytic</text>
+
+            <rect x="350" y="40" width="160" height="42" rx="3" fill="rgba(155,45,66,0.1)" stroke="#9b2d42" stroke-width="1"/>
+            <text x="430" y="57" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#9b2d42" font-weight="700">تركيبية</text>
+            <text x="430" y="73" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#6b1d2e">Synthetic</text>
+
+            <!-- Row headers -->
+            <rect x="10" y="95" width="150" height="80" rx="3" fill="rgba(201,168,76,0.07)" stroke="#c9a84c" stroke-width="0.8"/>
+            <text x="85" y="128" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#c9a84c" font-weight="700">قبلية</text>
+            <text x="85" y="145" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">A Priori</text>
+            <text x="85" y="160" text-anchor="middle" font-family="Amiri,serif" font-size="9" fill="#a89880">قبل التجربة</text>
+
+            <rect x="10" y="195" width="150" height="80" rx="3" fill="rgba(42,138,158,0.07)" stroke="#2a8a9e" stroke-width="0.8"/>
+            <text x="85" y="228" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#2a8a9e" font-weight="700">بعدية</text>
+            <text x="85" y="245" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#1a5f6e">A Posteriori</text>
+            <text x="85" y="260" text-anchor="middle" font-family="Amiri,serif" font-size="9" fill="#a89880">بعد التجربة</text>
+
+            <!-- Cells -->
+            <!-- Analytic A Priori -->
+            <rect x="170" y="95" width="160" height="80" rx="3" fill="#1e1a16" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+            <text x="250" y="128" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#e8e0d0" font-weight="700">تحليلية قبلية</text>
+            <text x="250" y="146" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">«كل العزاب غير متزوجين»</text>
+            <text x="250" y="162" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">Necessarily true by meaning</text>
+
+            <!-- Synthetic A Priori — Kant's special case -->
+            <rect x="350" y="95" width="160" height="80" rx="3" fill="rgba(201,168,76,0.08)" stroke="#c9a84c" stroke-width="1.5"/>
+            <text x="430" y="118" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#c9a84c" font-weight="700">تركيبية قبلية ✦</text>
+            <text x="430" y="136" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#ccc5b5">«٧+٥=١٢»</text>
+            <text x="430" y="152" text-anchor="middle" font-family="Amiri,serif" font-size="9" fill="#a89880">مفتاح كانط للميتافيزيقا</text>
+            <text x="430" y="167" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="#8a6e2f">Kant's key discovery</text>
+
+            <!-- Analytic A Posteriori — impossible -->
+            <rect x="170" y="195" width="160" height="80" rx="3" fill="rgba(107,29,46,0.08)" stroke="rgba(107,29,46,0.4)" stroke-width="1"/>
+            <text x="250" y="228" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#6b1d2e" font-weight="700">تحليلية بعدية</text>
+            <text x="250" y="246" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#6b1d2e">متعذّرة / مثيرة للجدل</text>
+            <text x="250" y="262" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#6b1d2e">Contested category</text>
+
+            <!-- Synthetic A Posteriori -->
+            <rect x="350" y="195" width="160" height="80" rx="3" fill="#1e1a16" stroke="rgba(42,138,158,0.3)" stroke-width="1"/>
+            <text x="430" y="228" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#2a8a9e" font-weight="700">تركيبية بعدية</text>
+            <text x="430" y="246" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">«الثلج أبيض»</text>
+            <text x="430" y="262" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#1a5f6e">Ordinary empirical facts</text>
+
+            <!-- Note at bottom -->
+            <text x="270" y="300" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#c9a84c">✦ التركيبية القبلية هي الإسهام الأعمق لكانط — إمكانية معرفة الواقع بالعقل وحده</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- CHAPTER 6 -->
+  <article class="chapter anim-fade-up" id="ch6">
+    <div class="chapter-header">
+      <div class="ch-number">٦</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">المذاهب الفلسفية المتعارضة</div>
+        <div class="ch-title-en">Important Opposing '-Isms'</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        يقدّم تينانت في هذا الفصل مسرداً واسعاً للمذاهب الفلسفية المتعارضة، مرتّبةً في أزواج من المتناقضات. إن فهم هذه الثنائيات هو مدخل أساسي لاستيعاب المشهد الفلسفي العام.
+      </p>
+
+      <div class="isms-grid">
+        <div class="ism-card">
+          <div class="ism-vs">الواقعية ↔ اللاواقعية</div>
+          <div class="ism-names">الواقعية · اللاواقعية · المثالية · الأداتية</div>
+          <div class="ism-en">Realism v. Anti-realism, Idealism, Instrumentalism</div>
+        </div>
+        <div class="ism-card">
+          <div class="ism-vs">الحقيقة</div>
+          <div class="ism-names">الجوهرية · الانكماشية</div>
+          <div class="ism-en">Substantialism v. Deflationism about Truth</div>
+        </div>
+        <div class="ism-card">
+          <div class="ism-vs">المتجاوز ↔ الوضعي</div>
+          <div class="ism-names">التجاوزية · الوضعية</div>
+          <div class="ism-en">Transcendentalism v. Positivism</div>
+        </div>
+        <div class="ism-card">
+          <div class="ism-vs">المطلق ↔ النسبي</div>
+          <div class="ism-names">الإطلاقية · النسبوية</div>
+          <div class="ism-en">Absolutism v. Relativism</div>
+        </div>
+        <div class="ism-card">
+          <div class="ism-vs">الدين</div>
+          <div class="ism-names">الإيمان بالإله · الإلحاد · الطبيعانية</div>
+          <div class="ism-en">Theism v. Atheism / Naturalism</div>
+        </div>
+        <div class="ism-card">
+          <div class="ism-vs">الإرادة</div>
+          <div class="ism-names">الحتمية · الليبرتارية</div>
+          <div class="ism-en">Determinism v. Libertarianism</div>
+        </div>
+        <div class="ism-card">
+          <div class="ism-vs">مصدر المعرفة</div>
+          <div class="ism-names">العقلانية · التجريبية</div>
+          <div class="ism-en">Rationalism v. Empiricism</div>
+        </div>
+        <div class="ism-card">
+          <div class="ism-vs">العقل والجسد</div>
+          <div class="ism-names">الثنائية · المادية · الأحادية</div>
+          <div class="ism-en">Dualism v. Monism / Materialism</div>
+        </div>
+        <div class="ism-card">
+          <div class="ism-vs">الأخلاق</div>
+          <div class="ism-names">الإدراكية · الانفعالية</div>
+          <div class="ism-en">Cognitivism v. Emotivism (in ethics)</div>
+        </div>
+        <div class="ism-card">
+          <div class="ism-vs">المعرفة والشك</div>
+          <div class="ism-names">التأسيسية · التماسكية</div>
+          <div class="ism-en">Foundationalism v. Coherentism</div>
+        </div>
+        <div class="ism-card">
+          <div class="ism-vs">الاختزالية</div>
+          <div class="ism-names">الاختزالية · اللا-اختزالية</div>
+          <div class="ism-en">Reductionism v. Anti-reductionism</div>
+        </div>
+        <div class="ism-card">
+          <div class="ism-vs">الفرد والمجتمع</div>
+          <div class="ism-names">الفردانية · الجماعانية</div>
+          <div class="ism-en">Individualism v. Communitarianism</div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</section>
+
+<!-- ══════════════════════════════════════════
+     PART II — PHILOSOPHY & METHOD
+══════════════════════════════════════════ -->
+<section class="book-part" id="part2">
+  <div class="part-header anim-fade-up">
+    <div class="part-label">الجزء الثاني</div>
+    <div class="part-title-ar">الفلسفة والمنهج</div>
+    <div class="part-title-en">Philosophy and Method</div>
+  </div>
+
+  <!-- CHAPTER 7 -->
+  <article class="chapter anim-fade-up" id="ch7">
+    <div class="chapter-header">
+      <div class="ch-number">٧</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">ما هو المنطق؟</div>
+        <div class="ch-title-en">What is Logic?</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        المنطق هو العمود الفقري للاستدلال الفلسفي؛ وهو علم القواعد الصورية التي تحكم الانتقال الصحيح من مقدمات إلى نتائج. يُميّز المنطق بين صحة الشكل (الصلاحية) وصدق المضمون (الحقيقة).
+      </p>
+
+      <!-- Logic symbols -->
+      <div class="subsection">
+        <div class="sub-title">الرموز المنطقية الأساسية</div>
+      </div>
+      <div class="logic-symbols">
+        <div class="logic-sym"><span class="ls-sym">¬</span><span class="ls-ar">النفي (لا)</span></div>
+        <div class="logic-sym"><span class="ls-sym">∧</span><span class="ls-ar">الاقتران (و)</span></div>
+        <div class="logic-sym"><span class="ls-sym">∨</span><span class="ls-ar">الانفصال (أو)</span></div>
+        <div class="logic-sym"><span class="ls-sym">→</span><span class="ls-ar">الشرطي (إذا..إذن)</span></div>
+        <div class="logic-sym"><span class="ls-sym">↔</span><span class="ls-ar">ثنائي الشرط</span></div>
+        <div class="logic-sym"><span class="ls-sym">∀</span><span class="ls-ar">الكم الكلي (لكل)</span></div>
+        <div class="logic-sym"><span class="ls-sym">∃</span><span class="ls-ar">الكم الوجودي (يوجد)</span></div>
+        <div class="logic-sym"><span class="ls-sym">⊢</span><span class="ls-ar">الاستنتاج</span></div>
+        <div class="logic-sym"><span class="ls-sym">⊨</span><span class="ls-ar">اللزوم الدلالي</span></div>
+      </div>
+
+      <!-- Argument diagram -->
+      <div class="diagram-wrap">
+        <div class="diagram-caption">بنية الحجة المنطقية — الاستدلال الصالح</div>
+        <div class="diagram-body">
+          <svg viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg" width="520" height="260">
+            <defs>
+              <marker id="arr2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#c9a84c" opacity="0.8"/>
+              </marker>
+            </defs>
+
+            <!-- Valid argument -->
+            <text x="130" y="20" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#c9a84c">حجة صالحة</text>
+            <rect x="20" y="35" width="220" height="45" rx="4" fill="#2e2820" stroke="#c9a84c" stroke-width="1"/>
+            <text x="130" y="54" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#ccc5b5">م١: جميع البشر فانون</text>
+            <text x="130" y="70" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#ccc5b5">م٢: سقراط إنسان</text>
+            <line x1="20" y1="100" x2="240" y2="100" stroke="#c9a84c" stroke-width="1.5"/>
+            <text x="130" y="92" text-anchor="middle" font-family="Amiri,serif" font-size="9" fill="#8a6e2f">إذن ∴</text>
+            <rect x="20" y="108" width="220" height="40" rx="4" fill="rgba(201,168,76,0.1)" stroke="#c9a84c" stroke-width="1.5"/>
+            <text x="130" y="133" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#c9a84c" font-weight="700">ن: سقراط فانٍ ✓</text>
+
+            <text x="130" y="175" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">DEDUCTIVELY VALID — If premises true, conclusion must be true</text>
+            <text x="130" y="192" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">صالح استنباطياً: إذا صحّت المقدمات وجب أن تصح النتيجة</text>
+
+            <!-- Invalid argument -->
+            <text x="390" y="20" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#9b2d42">حجة غير صالحة</text>
+            <rect x="280" y="35" width="220" height="45" rx="4" fill="#2e2820" stroke="#9b2d42" stroke-width="1"/>
+            <text x="390" y="54" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#ccc5b5">م١: بعض الطيور تطير</text>
+            <text x="390" y="70" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#ccc5b5">م٢: البطريق طائر</text>
+            <line x1="280" y1="100" x2="500" y2="100" stroke="#9b2d42" stroke-width="1.5"/>
+            <text x="390" y="92" text-anchor="middle" font-family="Amiri,serif" font-size="9" fill="#6b1d2e">إذن ∴</text>
+            <rect x="280" y="108" width="220" height="40" rx="4" fill="rgba(107,29,46,0.1)" stroke="#9b2d42" stroke-width="1.5"/>
+            <text x="390" y="133" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#9b2d42" font-weight="700">ن: البطريق يطير ✗</text>
+
+            <text x="390" y="175" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#6b1d2e">INVALID — Premises true, conclusion false</text>
+            <text x="390" y="192" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">غير صالح: المقدمات صادقة والنتيجة كاذبة</text>
+
+            <!-- Legend -->
+            <rect x="155" y="218" width="210" height="32" rx="4" fill="rgba(201,168,76,0.05)" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+            <text x="260" y="232" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#c9a84c">الصلاحية: الشكل · الصدق: المضمون</text>
+            <text x="260" y="244" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="#8a6e2f">Validity: Form · Truth: Content</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- CHAPTER 8 -->
+  <article class="chapter anim-fade-up" id="ch8">
+    <div class="chapter-header">
+      <div class="ch-number">٨</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">الاستدلال الاستقرائي</div>
+        <div class="ch-title-en">Inductive Reasoning</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        في حين يوصل الاستنباط من صدق المقدمات إلى صدق النتيجة بصورة ضرورية، يزيد الاستقراء من احتمال صدق النتيجة دون أن يضمنه. وقد صاغ ديفيد هيوم المشكلة الأعمق في هذا الصدد: «لماذا نثق بالاستدلال الاستقرائي أصلاً؟»
+      </p>
+
+      <div class="concept-box burgundy">
+        <div class="concept-label">مشكلة الاستقراء عند هيوم</div>
+        <p>
+          لاحظ هيوم أن كل تبرير للاستدلال الاستقرائي يعتمد هو نفسه على الاستقراء — وهو دور منطقي مفرغ. إذا قلنا «الاستقراء أثبت نجاعته في الماضي إذن سينجح في المستقبل» فنحن نستخدم الاستقراء لتبرير الاستقراء. هذه هي «المشكلة القديمة للاستقراء» عند هيوم.
+        </p>
+      </div>
+
+      <div class="concept-box teal">
+        <div class="concept-label">قاعدة ريشنباخ المستقيمة</div>
+        <p>
+          اقترح هانس ريشنباخ حلاً عملياً: إذا كانت للطبيعة حدود تكرارية فإن قاعدة الاستقراء ستكتشفها في نهاية المطاف؛ وإن لم تكن لها حدود فلا استراتيجية أخرى ستنجح. وبهذا المعنى يُعدّ الاستقراء «الرهان الأمثل» في غياب اليقين.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- CHAPTER 9 -->
+  <article class="chapter anim-fade-up" id="ch9">
+    <div class="chapter-header">
+      <div class="ch-number">٩</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">منهج التحليل المفهومي</div>
+        <div class="ch-title-en">The Method of Conceptual Analysis</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        يرمي التحليل المفهومي إلى تحديد الشروط الضرورية والكافية لتطبيق مفهوم ما. أشهر مثال: ما المعرفة؟
+      </p>
+
+      <div class="argument-block">
+        <div class="arg-title">التحليل الأفلاطوني للمعرفة — Plato's Analysis</div>
+        <div class="arg-line"><div class="arg-num">ش١</div><div>يعلم س أن ق، إذا وفقط إذا...</div></div>
+        <div class="arg-line"><div class="arg-num">ش٢</div><div>ق صادقة (شرط الصدق)</div></div>
+        <div class="arg-line"><div class="arg-num">ش٣</div><div>س يعتقد أن ق (شرط الاعتقاد)</div></div>
+        <div class="arg-line conclusion"><div class="arg-num">ش٤</div><div>اعتقاد س مبرَّر (شرط التبرير) — المعرفة = اعتقاد صادق مبرَّر JTB</div></div>
+      </div>
+
+      <div class="concept-box burgundy">
+        <div class="concept-label">مثال غيتير — نقض التحليل الأفلاطوني</div>
+        <p>
+          في ١٩٦٣ نشر إدموند غيتير ورقة قصيرة من ثلاث صفحات دحض فيها التحليل الأفلاطوني للمعرفة بأمثلة مضادة بارعة: حالات يتوفر فيها الاعتقاد الصادق المبرَّر، غير أننا نتردد في وصفه بالمعرفة. فتح ذلك باباً ضخماً من البحث الفلسفي لم يُغلق حتى اليوم.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- CHAPTER 10 -->
+  <article class="chapter anim-fade-up" id="ch10">
+    <div class="chapter-header">
+      <div class="ch-number">١٠</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">منهج الشرح المفهومي</div>
+        <div class="ch-title-en">The Method of Conceptual Explication</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        بدلاً من تحليل مفهوم قائم، يسعى الشرح المفهومي إلى استبداله بمفهوم نظري دقيق يؤدي وظيفته بصورة أوضح. المثال الكلاسيكي: مفهوم «الدالة القابلة للحوسبة» الذي طوّره تيورينج وكيرتش-غودل.
+      </p>
+
+      <div class="concept-box">
+        <div class="concept-label">أطروحة تيورينج–تشيرش</div>
+        <p>
+          تنص على أن كل دالة قابلة للحوسبة بصورة حدسية يمكن حوسبتها بآلة تيورينج. هذه ليست برهاناً رياضياً — إنها أطروحة فلسفية تربط المفهوم الحدسي الغامض بمفهوم رياضي دقيق. وتُعدّ من أعمق الأمثلة على الشرح المفهومي الناجح في تاريخ العلوم.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- CHAPTER 11 -->
+  <article class="chapter anim-fade-up" id="ch11">
+    <div class="chapter-header">
+      <div class="ch-number">١١</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">منهج التجربة الفكرية</div>
+        <div class="ch-title-en">The Method of Thought-Experiment</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        التجربة الفكرية هي سيناريو مُتخيَّل يُستخدم لاختبار موقف فلسفي أو نقضه. وهي أداة الفيلسوف حين تعجزه التجربة الفعلية — إذ يُبحر في ممكنات العالم بدلاً من مشاهداته.
+      </p>
+
+      <div class="thought-exp-grid">
+        <div class="te-card">
+          <div class="te-icon">🚢</div>
+          <div class="te-name-ar">سفينة ثيسيوس</div>
+          <div class="te-name-en">Ship of Theseus</div>
+          <div class="te-desc">إذا استُبدلت كل أجزاء السفينة تدريجياً، هل تبقى نفس السفينة؟ — مشكلة الهوية عبر الزمن</div>
+        </div>
+        <div class="te-card">
+          <div class="te-icon">😈</div>
+          <div class="te-name-ar">الشيطان الخادع لديكارت</div>
+          <div class="te-name-en">Descartes's Evil Demon</div>
+          <div class="te-desc">هل يمكن أن يكون ثمة شيطان قادر على خداعنا في كل اعتقاداتنا؟ — أساس الشك المنهجي</div>
+        </div>
+        <div class="te-card">
+          <div class="te-icon">🧠</div>
+          <div class="te-name-ar">دماغ في وعاء — بوتنام</div>
+          <div class="te-name-en">Putnam's Brain-in-a-Vat</div>
+          <div class="te-desc">هل يمكن أن تكون دماغاً في وعاء تُغذَّى بتجارب وهمية؟ — حدود اليقين والمرجعية اللغوية</div>
+        </div>
+        <div class="te-card">
+          <div class="te-icon">🌍</div>
+          <div class="te-name-ar">الأرض التوأم — بوتنام</div>
+          <div class="te-name-en">Putnam's Twin-Earth</div>
+          <div class="te-desc">لو كان ثمة عالم مماثل لعالمنا لكن «الماء» فيه مادة مختلفة كيميائياً، هل معنى كلمة «ماء» هو نفسه؟</div>
+        </div>
+        <div class="te-card">
+          <div class="te-icon">🈵</div>
+          <div class="te-name-ar">الغرفة الصينية — سيرل</div>
+          <div class="te-name-en">Searle's Chinese Room</div>
+          <div class="te-desc">شخص داخل غرفة يتبع قواعد لمعالجة الرموز الصينية دون فهمها — هل هذا ذكاء حقيقي؟</div>
+        </div>
+        <div class="te-card">
+          <div class="te-icon">🧟</div>
+          <div class="te-name-ar">الزومبي الفلسفي</div>
+          <div class="te-name-en">Philosophical Zombie</div>
+          <div class="te-desc">كائن مطابق لك جسمانياً ووظيفياً لكن بلا وعي داخلي — هل يُدحض الفيزيائية؟</div>
+        </div>
+        <div class="te-card">
+          <div class="te-icon">🎨</div>
+          <div class="te-name-ar">ماري العالمة — جاكسون</div>
+          <div class="te-name-en">Jackson's Scientist Mary</div>
+          <div class="te-desc">عالمة تعرف كل حقائق الفيزياء عن اللون لكنها لم ترَ الأحمر قط — هل ستتعلم شيئاً جديداً؟</div>
+        </div>
+        <div class="te-card">
+          <div class="te-icon">🔄</div>
+          <div class="te-name-ar">الطيف المقلوب</div>
+          <div class="te-name-en">Inverted Spectrum</div>
+          <div class="te-desc">هل يمكن أن يرى شخص آخر الأحمر بما تراه أنت أخضر، مع التطابق الوظيفي الكامل؟</div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- CHAPTER 12-14 (condensed) -->
+  <article class="chapter anim-fade-up" id="ch12">
+    <div class="chapter-header">
+      <div class="ch-number">١٢</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">الإبداع الفكري والصرامة المنهجية</div>
+        <div class="ch-title-en">Intellectual Creativity and Rigor</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        يُولي تينانت اهتماماً خاصاً للرياضيات بوصفها نموذجاً أعلى للمعرفة الفلسفية: فهي ضرورية وقبلية وموضوعية، وفيها يتحالف الإبداع الحدسي مع الصرامة البرهانية. يُميّز تينانت بين الاستدلال المنطقي والبصيرة الإبداعية — كلاهما ضروري، ولا يغني أحدهما عن الآخر.
+      </p>
+      <div class="concept-box">
+        <div class="concept-label">خصائص المعرفة الرياضية</div>
+        <p>الرياضيات ضرورية ويقينية وقبلية — حقائقها مستقلة عن التجربة. تبدأ بمفاهيم بسيطة (العدد، المجموعة) وتبني بالتعريفات والمبرهنات صرحاً ضخماً. وهي، بصورة لافتة، قابلة للتطبيق على الواقع المادي رغم طابعها المجرد — وهو ما سمّاه فيغنر «فاعلية الرياضيات غير المعقولة».</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="chapter anim-fade-up" id="ch13">
+    <div class="chapter-header">
+      <div class="ch-number">١٣</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">الاستنباط في الرياضيات والعلوم</div>
+        <div class="ch-title-en">Deduction in Mathematics and Science</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        يتناول هذا الفصل البنية المنطقية للرياضيات والمنهج العلمي، مع التركيز على مشكلة كواين–دوهيم: لا يمكن اختبار فرضية علمية منفردة، بل دائماً ضمن شبكة من الفرضيات الخلفية. وهذا ما يُعقّد أي تصور ساذج لـ«التحقق التجريبي».
+      </p>
+    </div>
+  </article>
+
+  <article class="chapter anim-fade-up" id="ch14">
+    <div class="chapter-header">
+      <div class="ch-number">١٤</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">مسألة الاختزالية المنهجية</div>
+        <div class="ch-title-en">The Methodological Issue of Reductionism</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        الاختزالية هي الرأي القائل بأن ظواهر مستوى أعلى (النفس، الحياة) يمكن إرجاعها تاماً إلى ظواهر مستوى أدنى (الكيمياء، الفيزياء). تُشكّل مسألة التراتبية (supervenience) بين المستويات الجواب المعتدل: لا اختزالية صارمة، ولا استقلالية مبالغة.
+      </p>
+    </div>
+  </article>
+
+</section>
+
+<!-- ══════════════════════════════════════════
+     PART III — THE EXISTENCE OF GOD
+══════════════════════════════════════════ -->
+<section class="book-part" id="part3">
+  <div class="part-header anim-fade-up">
+    <div class="part-label">الجزء الثالث</div>
+    <div class="part-title-ar">وجود الله</div>
+    <div class="part-title-en">The Existence of God</div>
+  </div>
+
+  <!-- CHAPTER 15 -->
+  <article class="chapter anim-fade-up" id="ch15">
+    <div class="chapter-header">
+      <div class="ch-number">١٥</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">الحجج القبلية على وجود الله</div>
+        <div class="ch-title-en">A Priori Arguments for the Existence of God</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        قدّمت الفلسفة الدينية حججاً عدة على وجود الله تنقسم إلى قبلية (مستقلة عن التجربة) وبعدية (مستندة إليها). يستعرض تينانت هذه الحجج بتحليل نقدي دقيق.
+      </p>
+
+      <div class="subsection">
+        <div class="sub-title">١٥·١ — الحجة الأنطولوجية (أنسيلم)</div>
+      </div>
+
+      <div class="argument-block">
+        <div class="arg-title">الحجة الأنطولوجية — Anselm's Ontological Argument</div>
+        <div class="arg-line"><div class="arg-num">م١</div><div>الله هو الكائن الذي لا يمكن تصور أعظم منه (أعظم الممكنات)</div></div>
+        <div class="arg-line"><div class="arg-num">م٢</div><div>إذا وُجد هذا الكائن في الذهن فقط، يمكن تصور ما هو أعظم منه (أي الكائن ذاته موجوداً في الواقع)</div></div>
+        <div class="arg-line"><div class="arg-num">م٣</div><div>لكن ذلك يناقض تعريف الله بوصفه أعظم الممكنات</div></div>
+        <div class="arg-line conclusion"><div class="arg-num">ن</div><div>إذن الله موجود في الواقع، لا في الذهن وحده</div></div>
+      </div>
+
+      <!-- Ontological Argument SVG -->
+      <div class="diagram-wrap">
+        <div class="diagram-caption">مخطط — الحجة الأنطولوجية ونقودها الأربعة</div>
+        <div class="diagram-body">
+          <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" width="600" height="360">
+            <!-- Center: The argument -->
+            <rect x="200" y="20" width="200" height="70" rx="5" fill="rgba(201,168,76,0.08)" stroke="#c9a84c" stroke-width="1.5"/>
+            <text x="300" y="46" text-anchor="middle" font-family="Amiri,serif" font-size="14" fill="#c9a84c" font-weight="700">الحجة الأنطولوجية</text>
+            <text x="300" y="63" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">الله = أعظم الممكنات</text>
+            <text x="300" y="79" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">Ontological Argument (Anselm)</text>
+
+            <!-- Objection 1 - top left -->
+            <line x1="200" y1="55" x2="130" y2="130" stroke="#9b2d42" stroke-width="1" stroke-dasharray="5,4"/>
+            <rect x="20" y="130" width="190" height="65" rx="4" fill="#2e2820" stroke="#9b2d42" stroke-width="1"/>
+            <text x="115" y="152" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#9b2d42" font-weight="700">نقد ١: خطأ لغوي</text>
+            <text x="115" y="169" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">الفهم اللغوي لا يعني</text>
+            <text x="115" y="184" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">وجود المفهوم</text>
+
+            <!-- Objection 2 - top right -->
+            <line x1="400" y1="55" x2="470" y2="130" stroke="#9b2d42" stroke-width="1" stroke-dasharray="5,4"/>
+            <rect x="390" y="130" width="190" height="65" rx="4" fill="#2e2820" stroke="#9b2d42" stroke-width="1"/>
+            <text x="485" y="152" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#9b2d42" font-weight="700">نقد ٢: كانط</text>
+            <text x="485" y="169" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">«الوجود ليس محمولاً»</text>
+            <text x="485" y="184" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">لا تضيف وصفاً للشيء</text>
+
+            <!-- Objection 3 - bottom left -->
+            <line x1="200" y1="85" x2="130" y2="240" stroke="#2a8a9e" stroke-width="1" stroke-dasharray="5,4"/>
+            <rect x="20" y="240" width="190" height="65" rx="4" fill="#2e2820" stroke="#2a8a9e" stroke-width="1"/>
+            <text x="115" y="262" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#2a8a9e" font-weight="700">نقد ٣: جزيرة غونيلو</text>
+            <text x="115" y="279" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">يُثبت الحجة الخاطئة:</text>
+            <text x="115" y="294" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">توجد جزيرة مثالية!</text>
+
+            <!-- Objection 4 - bottom right -->
+            <line x1="400" y1="85" x2="470" y2="240" stroke="#2a8a9e" stroke-width="1" stroke-dasharray="5,4"/>
+            <rect x="390" y="240" width="190" height="65" rx="4" fill="#2e2820" stroke="#2a8a9e" stroke-width="1"/>
+            <text x="485" y="262" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#2a8a9e" font-weight="700">نقد ٤: منطق ثنائي القيمة</text>
+            <text x="485" y="279" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">الاختزال للمستحيل يستلزم</text>
+            <text x="485" y="294" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">قانون استبعاد الثالث</text>
+
+            <!-- Bottom center summary -->
+            <rect x="170" y="328" width="260" height="28" rx="4" fill="rgba(201,168,76,0.05)" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+            <text x="300" y="347" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#8a6e2f">الحجة قائمة رغم كل النقود — لا إجماع فلسفياً</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="sub-title">١٥·٢ — الحجة الكونية (أكويناس)</div>
+      </div>
+
+      <div class="argument-block">
+        <div class="arg-title">الحجة الكونية — Cosmological Argument (Aquinas)</div>
+        <div class="arg-line"><div class="arg-num">م١</div><div>كل حادثة في العالم لها سبب</div></div>
+        <div class="arg-line"><div class="arg-num">م٢</div><div>لا يمكن أن تمتد سلسلة الأسباب إلى ما لا نهاية</div></div>
+        <div class="arg-line"><div class="arg-num">م٣</div><div>إذن لا بد من سبب أول غير مسبَّب</div></div>
+        <div class="arg-line conclusion"><div class="arg-num">ن</div><div>هذا السبب الأول هو الله</div></div>
+      </div>
+
+      <div class="concept-box burgundy">
+        <div class="concept-label">نقد أكويناس — مغالطة التحويل الكمّي</div>
+        <p>
+          يُلاحظ تينانت أن أكويناس يرتكب مغالطة التحويل الكمّي حين ينتقل من «كل شيء له سبب» إلى «ثمة شيء هو سبب كل شيء» — فهذا قفزة منطقية غير مشروعة. كما أن نموذج الانفجار العظيم يُلمّح إلى أن الزمن نفسه بدأ مع الكون، مما يُعقّد مفهوم «السبب الأول».
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- CHAPTER 16 -->
+  <article class="chapter anim-fade-up" id="ch16">
+    <div class="chapter-header">
+      <div class="ch-number">١٦</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">حجة التصميم</div>
+        <div class="ch-title-en">The Argument from Design</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        تُلاحظ حجة التصميم أن العالم الطبيعي يُبدي نظاماً ودقةً بالغتين تُوحيان بوجود مصمّم عاقل. والسؤال: هل يُقدّم الكون بنفسه دليلاً على وجود الله؟
+      </p>
+
+      <!-- Design vs Evolution -->
+      <div class="diagram-wrap">
+        <div class="diagram-caption">مقارنة — الفرضية الإلهية مقابل الفرضية الطبيعانية التطورية</div>
+        <div class="diagram-body">
+          <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg" width="560" height="240">
+            <text x="280" y="22" text-anchor="middle" font-family="Amiri,serif" font-size="14" fill="#c9a84c">شرح النظام البيولوجي</text>
+
+            <!-- Theistic -->
+            <rect x="20" y="40" width="240" height="160" rx="5" fill="#2e2820" stroke="#c9a84c" stroke-width="1.2"/>
+            <text x="140" y="65" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#c9a84c" font-weight="700">الفرضية الإلهية</text>
+            <text x="140" y="85" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">THEISTIC HYPOTHESIS</text>
+            <line x1="40" y1="93" x2="240" y2="93" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+            <text x="140" y="113" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">الله صمّم الكائنات الحية</text>
+            <text x="140" y="133" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">بمعرفة مطلقة وقدرة مطلقة</text>
+            <text x="140" y="153" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">← بساطة افتراضية</text>
+            <text x="140" y="173" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">← شمولية تفسيرية</text>
+            <text x="140" y="190" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#c9a84c">← ولكن: ما الذي صمّم الله؟</text>
+
+            <!-- Naturalistic -->
+            <rect x="300" y="40" width="240" height="160" rx="5" fill="#2e2820" stroke="#2a8a9e" stroke-width="1.2"/>
+            <text x="420" y="65" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#2a8a9e" font-weight="700">الفرضية الطبيعانية</text>
+            <text x="420" y="85" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#1a5f6e">DARWINIAN HYPOTHESIS</text>
+            <line x1="320" y1="93" x2="520" y2="93" stroke="rgba(42,138,158,0.2)" stroke-width="1"/>
+            <text x="420" y="113" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">الانتخاب الطبيعي + الطفرات</text>
+            <text x="420" y="133" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">تفسّر التعقيد البيولوجي</text>
+            <text x="420" y="153" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">← لا تفترض ذكاءً خارجياً</text>
+            <text x="420" y="173" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">← دعم تجريبي واسع</text>
+            <text x="420" y="190" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#2a8a9e">← لكن: مشكلة الظهور الأول</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- CHAPTER 17 -->
+  <article class="chapter anim-fade-up" id="ch17">
+    <div class="chapter-header">
+      <div class="ch-number">١٧</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">حجة الخلق المعاصر</div>
+        <div class="ch-title-en">The Argument from Contemporary Creationism</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        يفحص تينانت هنا جدل الخلقية الذكية مقابل الطبيعانية التطورية، مُبيّناً أن «التصميم الذكي» ليس نظرية علمية بالمعنى الدقيق — إذ لا يقدّم تنبؤات قابلة للدحض. ويُحلّل المبدأ الأنثروبي الذي يُلاحظ أن ثوابت الطبيعة مضبوطة بدقة شديدة لتسمح بوجود الحياة.
+      </p>
+    </div>
+  </article>
+
+  <!-- CHAPTER 18 -->
+  <article class="chapter anim-fade-up" id="ch18">
+    <div class="chapter-header">
+      <div class="ch-number">١٨</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">رهان باسكال</div>
+        <div class="ch-title-en">Pascal's Wager</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        صاغ بليز باسكال (١٦٢٣–١٦٦٢) حجة براغماتية فريدة على الإيمان بالله: ليست حجة على وجوده، بل على عقلانية الإيمان به.
+      </p>
+
+      <!-- Pascal's Wager Matrix -->
+      <div class="diagram-wrap">
+        <div class="diagram-caption">مصفوفة رهان باسكال — نظرية القرار</div>
+        <div class="diagram-body">
+          <svg viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg" width="500" height="260">
+            <!-- Headers -->
+            <text x="250" y="22" text-anchor="middle" font-family="Amiri,serif" font-size="14" fill="#c9a84c">رهان باسكال</text>
+
+            <!-- Column headers: God exists / God doesn't exist -->
+            <rect x="190" y="38" width="130" height="40" rx="3" fill="rgba(201,168,76,0.1)" stroke="#c9a84c" stroke-width="1"/>
+            <text x="255" y="55" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#c9a84c" font-weight="700">الله موجود</text>
+            <text x="255" y="70" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="#8a6e2f">God Exists</text>
+
+            <rect x="330" y="38" width="150" height="40" rx="3" fill="rgba(107,29,46,0.1)" stroke="#9b2d42" stroke-width="1"/>
+            <text x="405" y="55" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#9b2d42" font-weight="700">الله غير موجود</text>
+            <text x="405" y="70" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="#6b1d2e">God Doesn't Exist</text>
+
+            <!-- Row headers -->
+            <rect x="10" y="90" width="170" height="60" rx="3" fill="rgba(201,168,76,0.07)" stroke="#c9a84c" stroke-width="0.8"/>
+            <text x="95" y="116" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#c9a84c" font-weight="700">تؤمن بالله</text>
+            <text x="95" y="134" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="#8a6e2f">Believe</text>
+
+            <rect x="10" y="165" width="170" height="60" rx="3" fill="rgba(107,29,46,0.07)" stroke="#9b2d42" stroke-width="0.8"/>
+            <text x="95" y="191" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#9b2d42" font-weight="700">لا تؤمن بالله</text>
+            <text x="95" y="209" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="#6b1d2e">Don't Believe</text>
+
+            <!-- Cells -->
+            <rect x="190" y="90" width="130" height="60" rx="3" fill="#1e1a16" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+            <text x="255" y="116" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#c9a84c" font-weight="700">+∞</text>
+            <text x="255" y="133" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">نعيم أبدي</text>
+
+            <rect x="330" y="90" width="150" height="60" rx="3" fill="#1e1a16" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+            <text x="405" y="116" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#ccc5b5" font-weight="700">− ص</text>
+            <text x="405" y="133" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">خسارة محدودة (التكاليف)</text>
+
+            <rect x="190" y="165" width="130" height="60" rx="3" fill="rgba(107,29,46,0.12)" stroke="#9b2d42" stroke-width="1"/>
+            <text x="255" y="191" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#9b2d42" font-weight="700">−∞</text>
+            <text x="255" y="208" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">عذاب أبدي</text>
+
+            <rect x="330" y="165" width="150" height="60" rx="3" fill="#1e1a16" stroke="rgba(42,138,158,0.3)" stroke-width="1"/>
+            <text x="405" y="191" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#2a8a9e" font-weight="700">+ ص</text>
+            <text x="405" y="208" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">ربح محدود (حرية)</text>
+
+            <!-- Conclusion -->
+            <text x="250" y="242" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#c9a84c">∴ عقلانياً: الإيمان هو الرهان الأمثل</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="concept-box burgundy">
+        <div class="concept-label">نقد رهان باسكال</div>
+        <p>
+          <strong style="color:var(--text-main)">النقد الأول:</strong> كيف يمكن أن تؤمن بالله «إرادياً»؟ الإيمان ليس فعلاً إرادياً مباشراً. <br/>
+          <strong style="color:var(--text-main)">النقد الثاني:</strong> أيّ الآلهة تختار؟ الحجة تنطبق على كل دين — وهذا يُلغي نتيجتها المحددة. فإذا كانت الآلهة كثيرة فالرهان يتفتت في التوزيع.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- CHAPTER 19 -->
+  <article class="chapter anim-fade-up" id="ch19">
+    <div class="chapter-header">
+      <div class="ch-number">١٩</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">مشكلة الشر</div>
+        <div class="ch-title-en">The Problem of Evil</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        تُعدّ مشكلة الشر من أعمق الاعتراضات على الإيمان الديني وأكثرها إلحاحاً: إذا كان الله كاملاً في القدرة والعلم والخير، فلماذا يوجد الشر في العالم؟
+      </p>
+
+      <div class="argument-block">
+        <div class="arg-title">حجة الشر المنطقية — Logical Problem of Evil</div>
+        <div class="arg-line"><div class="arg-num">م١</div><div>الله كلي القدرة: قادر على منع كل شر</div></div>
+        <div class="arg-line"><div class="arg-num">م٢</div><div>الله كلي العلم: يعلم بكل شر</div></div>
+        <div class="arg-line"><div class="arg-num">م٣</div><div>الله كلي الخير: يريد منع كل شر</div></div>
+        <div class="arg-line"><div class="arg-num">م٤</div><div>الشر موجود بالفعل</div></div>
+        <div class="arg-line conclusion"><div class="arg-num">ن</div><div>إذن: الله بهذه الصفات الثلاث مجتمعةً لا يوجد — (تناقض ظاهري)</div></div>
+      </div>
+
+      <p>يستعرض تينانت الردود الكلاسيكية على هذه الحجة:</p>
+
+      <div class="isms-grid">
+        <div class="ism-card">
+          <div class="ism-vs">الرد الأول</div>
+          <div class="ism-names">الشر ضروري للخير</div>
+          <div class="ism-en">Polarity Response — No good without evil</div>
+        </div>
+        <div class="ism-card">
+          <div class="ism-vs">الرد الثاني — لايبنتس</div>
+          <div class="ism-names">هذا أفضل العوالم الممكنة</div>
+          <div class="ism-en">Leibnizian Response — Best possible world</div>
+        </div>
+        <div class="ism-card">
+          <div class="ism-vs">الرد الثالث</div>
+          <div class="ism-names">الإرادة الحرة تستلزم إمكانية الشر</div>
+          <div class="ism-en">Libertarian Response — Free will defence</div>
+        </div>
+        <div class="ism-card">
+          <div class="ism-vs">الرد الرابع</div>
+          <div class="ism-names">الشر وسيلة للنمو الروحي</div>
+          <div class="ism-en">Soul-making Theodicy — Irenaeus</div>
+        </div>
+        <div class="ism-card">
+          <div class="ism-vs">الرد الخامس</div>
+          <div class="ism-names">إعادة مفهوم الكمال الإلهي</div>
+          <div class="ism-en">Reconceptualization Response</div>
+        </div>
+        <div class="ism-card">
+          <div class="ism-vs">الرد السادس</div>
+          <div class="ism-names">الشر ضمن قيود جوهرية</div>
+          <div class="ism-en">Deep Constraint Response</div>
+        </div>
+      </div>
+
+      <div class="discussion-block">
+        <div class="discussion-header">أسئلة للنقاش والتأمل</div>
+        <ul class="discussion-list">
+          <li>هل رهان باسكال يُثبت عقلانية الإيمان الديني بأي إله، أم أنه مُقيَّد بإله محدد؟</li>
+          <li>هل تكفي الإرادة الحرة وحدها لحل مشكلة الشر الطبيعي (الزلازل، السرطان)؟</li>
+          <li>هل يُبطل الشر وجود الله، أم أنه يُبطل فقط صفة الكمال المطلق؟</li>
+          <li>كيف يُقيّم المفكر المنصف حجة التصميم في ضوء نظرية التطور؟</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+</section>
+
+<!-- ══════════════════════════════════════════
+     PART IV — MIND, BODY, EXTERNAL WORLD
+══════════════════════════════════════════ -->
+<section class="book-part" id="part4">
+  <div class="part-header anim-fade-up">
+    <div class="part-label">الجزء الرابع</div>
+    <div class="part-title-ar">العقل، الجسد، والعالم الخارجي</div>
+    <div class="part-title-en">Mind, Body and External World</div>
+  </div>
+
+  <!-- CHAPTER 20 -->
+  <article class="chapter anim-fade-up" id="ch20">
+    <div class="chapter-header">
+      <div class="ch-number">٢٠</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">ديكارت: الثنائية والشكوكية</div>
+        <div class="ch-title-en">Descartes: Dualism and Skepticism</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        يُعدّ رينيه ديكارت (١٥٩٦–١٦٥٠) نقطة الانطلاق الحديثة لفلسفة العقل والمعرفة. في «تأملاته» الست يُطبّق منهج الشك المنهجي للوصول إلى يقين لا يُشكّ فيه.
+      </p>
+
+      <!-- Cogito argument -->
+      <div class="argument-block">
+        <div class="arg-title">الكوجيتو — Cogito ergo sum — «أنا أفكر إذن أنا موجود»</div>
+        <div class="arg-line"><div class="arg-num">م١</div><div>حتى لو كنت أُخدع في كل شيء، فإن فعل الشك نفسه يُثبت وجود مَن يشك</div></div>
+        <div class="arg-line"><div class="arg-num">م٢</div><div>أنا أفكر (أشك)</div></div>
+        <div class="arg-line conclusion"><div class="arg-num">ن</div><div>إذن: أنا موجود — هذا اليقين الأول الذي لا يمكن الشك فيه</div></div>
+      </div>
+
+      <!-- Mind-Body diagram -->
+      <div class="diagram-wrap">
+        <div class="diagram-caption">الثنائية الديكارتية — مشكلة التفاعل بين العقل والجسد</div>
+        <div class="diagram-body">
+          <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg" width="560" height="300">
+            <defs>
+              <marker id="arr3" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+                <path d="M0,0 L7,3.5 L0,7 Z" fill="#c9a84c" opacity="0.7"/>
+              </marker>
+              <marker id="arr3r" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto-start-reverse">
+                <path d="M0,0 L7,3.5 L0,7 Z" fill="#c9a84c" opacity="0.7"/>
+              </marker>
+            </defs>
+
+            <!-- Mind substance -->
+            <ellipse cx="150" cy="130" rx="110" ry="80" fill="rgba(201,168,76,0.06)" stroke="#c9a84c" stroke-width="1.5" stroke-dasharray="6,4"/>
+            <text x="150" y="110" text-anchor="middle" font-family="Amiri,serif" font-size="16" fill="#c9a84c" font-weight="700">الجوهر العقلي</text>
+            <text x="150" y="130" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#8a6e2f">Res Cogitans</text>
+            <text x="150" y="150" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">لا امتداد · لا مكان</text>
+            <text x="150" y="168" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">تفكير · شعور · إدراك</text>
+
+            <!-- Body substance -->
+            <rect x="330" y="55" width="200" height="155" rx="6" fill="rgba(42,138,158,0.06)" stroke="#2a8a9e" stroke-width="1.5"/>
+            <text x="430" y="110" text-anchor="middle" font-family="Amiri,serif" font-size="16" fill="#2a8a9e" font-weight="700">الجوهر المادي</text>
+            <text x="430" y="130" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#1a5f6e">Res Extensa</text>
+            <text x="430" y="150" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">امتداد · موقع في المكان</text>
+            <text x="430" y="170" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">قابل للقياس والقسمة</text>
+            <text x="430" y="190" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">يخضع لقوانين الطبيعة</text>
+
+            <!-- Interaction arrows -->
+            <path d="M 258 118 Q 285 100 330 118" stroke="#c9a84c" stroke-width="1.5" fill="none" marker-end="url(#arr3)"/>
+            <text x="295" y="95" text-anchor="middle" font-family="Amiri,serif" font-size="9" fill="#c9a84c">كيف؟</text>
+            <path d="M 330 150 Q 285 168 258 150" stroke="#c9a84c" stroke-width="1.5" fill="none" marker-end="url(#arr3)"/>
+
+            <!-- Problem marker -->
+            <circle cx="293" cy="133" r="18" fill="rgba(107,29,46,0.2)" stroke="#9b2d42" stroke-width="1.5"/>
+            <text x="293" y="130" text-anchor="middle" font-family="Amiri,serif" font-size="14" fill="#9b2d42" font-weight="700">؟</text>
+            <text x="293" y="144" text-anchor="middle" font-family="Cinzel,serif" font-size="7" fill="#6b1d2e">Problem</text>
+
+            <!-- Pineal gland note -->
+            <rect x="170" y="245" width="230" height="45" rx="4" fill="rgba(107,29,46,0.08)" stroke="rgba(107,29,46,0.3)" stroke-width="1"/>
+            <text x="285" y="263" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#9b2d42">حل ديكارت: الغدة الصنوبرية</text>
+            <text x="285" y="280" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#6b1d2e">Pineal Gland — موضع التلاقي بين الجوهرين</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- CHAPTERS 21-25 condensed -->
+  <article class="chapter anim-fade-up" id="ch21">
+    <div class="chapter-header">
+      <div class="ch-number">٢١</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">مشكلات فلسفة العقل</div>
+        <div class="ch-title-en">Problems about Mind</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        تفرض تجربة العقل الداخلية — مشاعرنا، أفكارنا، إدراكنا — طيفاً من المشكلات الفلسفية العميقة. أبرزها: مشكلة الكواليا (qualia) — طبيعة التجربة الحسية الداخلية، ومشكلة الوعي، ومشكلة العمدية (intentionality) أي توجّه الحالات الذهنية نحو موضوعاتها.
+      </p>
+      <div class="concept-box">
+        <div class="concept-label">مشكلة الكواليا — Qualia</div>
+        <p>ما الذي يشبه أن ترى الأحمر؟ أو أن تشعر بالألم؟ هذه الصفات الكيفية الذاتية للتجربة هي «الكواليا». السؤال: هل يمكن للعلم المادي أن يشرحها تاماً؟ أم تظل ثمة «فجوة تفسيرية» لا تسدّها الوصفة الفيزيائية؟</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="chapter anim-fade-up" id="ch22">
+    <div class="chapter-header">
+      <div class="ch-number">٢٢</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">الثنائية مقابل السلوكية المنطقية</div>
+        <div class="ch-title-en">Cartesian Dualism v. Logical Behaviorism</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        انتقد الفيلسوف غيلبرت رايل الثنائية الديكارتية بوصفها «أسطورة الشبح في الآلة» — مغالطة الفئة التي تُخطئ في تصنيف العقل كشيء من نوع مختلف عن الجسد. اقترح رايل بديلاً: السلوكية المنطقية — الحالات الذهنية ليست كيانات خفية بل استعدادات سلوكية.
+      </p>
+      <div class="concept-box burgundy">
+        <div class="concept-label">مغالطة الفئة عند رايل</div>
+        <p>
+          يضرب رايل مثالاً: زائر يُجال به في جامعة أوكسفورد فيرى كليّاتها وحدائقها وأساتذتها ثم يسأل «لكن أين الجامعة؟» — إنه أخطأ في فئة ما يبحث عنه. كذلك خطأ ديكارت: العقل ليس «شيئاً آخر» فوق الجسد — إنه منظومة من الاستعدادات والأفعال.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <article class="chapter anim-fade-up" id="ch23">
+    <div class="chapter-header">
+      <div class="ch-number">٢٣</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">المادية والتراتبية</div>
+        <div class="ch-title-en">Materialism and Supervenience</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        تؤكد المادية أن كل ما يوجد — بما في ذلك العقل والوعي — مادي في جوهره. ومفهوم التراتبية (supervenience) يصوغ هذا بدقة: الحالات الذهنية تترتّب على الحالات المادية — لا يمكن تغيير الأولى دون تغيير الثانية.
+      </p>
+
+      <!-- Mind theories diagram -->
+      <div class="diagram-wrap">
+        <div class="diagram-caption">خريطة النظريات المادية في فلسفة العقل</div>
+        <div class="diagram-body">
+          <svg viewBox="0 0 580 260" xmlns="http://www.w3.org/2000/svg" width="580" height="260">
+            <!-- Top: Materialism umbrella -->
+            <rect x="190" y="10" width="200" height="45" rx="4" fill="rgba(42,138,158,0.1)" stroke="#2a8a9e" stroke-width="1.5"/>
+            <text x="290" y="30" text-anchor="middle" font-family="Amiri,serif" font-size="14" fill="#2a8a9e" font-weight="700">المادية</text>
+            <text x="290" y="47" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#1a5f6e">Materialism</text>
+
+            <!-- Connecting lines -->
+            <line x1="200" y1="55" x2="80" y2="110" stroke="#2a8a9e" stroke-width="1" opacity="0.5"/>
+            <line x1="250" y1="55" x2="215" y2="110" stroke="#2a8a9e" stroke-width="1" opacity="0.5"/>
+            <line x1="290" y1="55" x2="350" y2="110" stroke="#2a8a9e" stroke-width="1" opacity="0.5"/>
+            <line x1="380" y1="55" x2="490" y2="110" stroke="#2a8a9e" stroke-width="1" opacity="0.5"/>
+
+            <!-- Theories -->
+            <rect x="20" y="110" width="130" height="65" rx="4" fill="#2e2820" stroke="#c9a84c" stroke-width="1"/>
+            <text x="85" y="135" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#c9a84c" font-weight="700">السلوكية المنطقية</text>
+            <text x="85" y="152" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">Logical Behaviorism</text>
+            <text x="85" y="168" text-anchor="middle" font-family="Amiri,serif" font-size="9" fill="#a89880">رايل، رايشنباخ</text>
+
+            <rect x="165" y="110" width="130" height="65" rx="4" fill="#2e2820" stroke="#9b2d42" stroke-width="1"/>
+            <text x="230" y="135" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#9b2d42" font-weight="700">نظرية الهوية</text>
+            <text x="230" y="152" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#6b1d2e">Identity Theory</text>
+            <text x="230" y="168" text-anchor="middle" font-family="Amiri,serif" font-size="9" fill="#a89880">سمارت، برايس</text>
+
+            <rect x="310" y="110" width="130" height="65" rx="4" fill="#2e2820" stroke="#c9a84c" stroke-width="1"/>
+            <text x="375" y="135" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#c9a84c" font-weight="700">الوظيفانية</text>
+            <text x="375" y="152" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">Functionalism</text>
+            <text x="375" y="168" text-anchor="middle" font-family="Amiri,serif" font-size="9" fill="#a89880">بوتنام، فودور</text>
+
+            <rect x="455" y="110" width="110" height="65" rx="4" fill="#2e2820" stroke="#9b2d42" stroke-width="1"/>
+            <text x="510" y="135" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#9b2d42" font-weight="700">المادية الإلغائية</text>
+            <text x="510" y="152" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="#6b1d2e">Eliminativism</text>
+            <text x="510" y="168" text-anchor="middle" font-family="Amiri,serif" font-size="9" fill="#a89880">تشيرتشلاند</text>
+
+            <!-- Supervenience note -->
+            <rect x="150" y="210" width="280" height="38" rx="4" fill="rgba(201,168,76,0.07)" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
+            <text x="290" y="226" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#c9a84c">التراتبية: العقل يترتّب على الجسد</text>
+            <text x="290" y="241" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">Supervenience: mental supervenes on physical</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="chapter anim-fade-up" id="ch24">
+    <div class="chapter-header">
+      <div class="ch-number">٢٤</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">الوظيفانية</div>
+        <div class="ch-title-en">Functionalism</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        الوظيفانية تُعرّف الحالات الذهنية بوظائفها لا بمادتها: الألم هو ما يُسببه الإصابة ويُنتج السلوك التجنّبي — بصرف النظر عن ماهيته الجسمانية. يفتح هذا باب إمكانية التعددية في التحقق (multiple realizability): الألم يمكن أن يكون في أدمغة بيولوجية وفي آلات على حدٍّ سواء.
+      </p>
+
+      <div class="concept-box burgundy">
+        <div class="concept-label">الحجة الصينية في الغرفة — سيرل</div>
+        <p>
+          يتخيّل جون سيرل شخصاً يُجيب على أسئلة بالصينية بمجرد اتباع قواعد صورية، دون أن يفهم صينية. إذا كان هذا ممكناً فإن الحوسبة الصورية — مهما كانت معقدة — لا تستلزم الفهم الحقيقي. وهذا يُشكّل تحدياً عميقاً لفكرة أن العقل مجرد برنامج حاسوبي.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <article class="chapter anim-fade-up" id="ch25">
+    <div class="chapter-header">
+      <div class="ch-number">٢٥</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">الإرادة الحرة مقابل الحتمية</div>
+        <div class="ch-title-en">Free Will v. Determinism</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        إذا كان كل حدث في الكون مُحدَّداً بالحوادث السابقة وفق قوانين الطبيعة، فهل الإرادة الحرة ممكنة؟ يُميّز تينانت بين الحتمية الصلبة (لا إرادة حرة أصلاً)، والليبرتارية (الإرادة خارج نطاق الحتمية)، والتوافقية (الإرادة الحرة متوافقة مع الحتمية).
+      </p>
+
+      <div class="diagram-wrap">
+        <div class="diagram-caption">مواقف الإرادة الحرة والحتمية</div>
+        <div class="diagram-body">
+          <svg viewBox="0 0 540 200" xmlns="http://www.w3.org/2000/svg" width="540" height="200">
+            <text x="270" y="20" text-anchor="middle" font-family="Amiri,serif" font-size="14" fill="#c9a84c">الإرادة الحرة والحتمية</text>
+
+            <rect x="20" y="40" width="155" height="130" rx="5" fill="#2e2820" stroke="#9b2d42" stroke-width="1.2"/>
+            <text x="97" y="68" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#9b2d42" font-weight="700">الحتمية الصلبة</text>
+            <text x="97" y="86" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#6b1d2e">Hard Determinism</text>
+            <line x1="40" y1="95" x2="155" y2="95" stroke="rgba(107,29,46,0.3)" stroke-width="1"/>
+            <text x="97" y="115" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">الحتمية صحيحة</text>
+            <text x="97" y="133" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">الإرادة وهم</text>
+            <text x="97" y="151" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">لا مسؤولية أخلاقية</text>
+
+            <rect x="192" y="40" width="155" height="130" rx="5" fill="rgba(201,168,76,0.07)" stroke="#c9a84c" stroke-width="1.5"/>
+            <text x="270" y="68" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#c9a84c" font-weight="700">التوافقية</text>
+            <text x="270" y="86" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">Compatibilism</text>
+            <line x1="210" y1="95" x2="330" y2="95" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+            <text x="270" y="115" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">الحتمية وحرية الإرادة</text>
+            <text x="270" y="133" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">يتعايشان</text>
+            <text x="270" y="151" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#ccc5b5">هيوم، كانط (جزئياً)</text>
+
+            <rect x="365" y="40" width="155" height="130" rx="5" fill="#2e2820" stroke="#2a8a9e" stroke-width="1.2"/>
+            <text x="442" y="68" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#2a8a9e" font-weight="700">الليبرتارية</text>
+            <text x="442" y="86" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#1a5f6e">Libertarianism</text>
+            <line x1="385" y1="95" x2="500" y2="95" stroke="rgba(42,138,158,0.3)" stroke-width="1"/>
+            <text x="442" y="115" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">الإرادة حرة فعلاً</text>
+            <text x="442" y="133" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">تتجاوز الحتمية</text>
+            <text x="442" y="151" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">كانط، ديكارت</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</section>
+
+<!-- ══════════════════════════════════════════
+     PART V — REPRESENTATION, INFERENCE, INFINITE
+══════════════════════════════════════════ -->
+<section class="book-part" id="part5">
+  <div class="part-header anim-fade-up">
+    <div class="part-label">الجزء الخامس</div>
+    <div class="part-title-ar">التمثيل، الاستدلال، واللانهاية الأبية</div>
+    <div class="part-title-en">Representation, Inference and the Elusive Infinite</div>
+  </div>
+
+  <!-- CHAPTER 26 -->
+  <article class="chapter anim-fade-up" id="ch26">
+    <div class="chapter-header">
+      <div class="ch-number">٢٦</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">التمثيل والتقييم</div>
+        <div class="ch-title-en">Representation and Evaluation</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        كيف يُمثّل اللغة العالم؟ ما الآلية التي تجعل الجملة صادقة أو كاذبة؟ يطرح تينانت نظرية التحقق والإبطال: تُقيَّم الجملة في وضع بعينه وفق قواعد التحقق والدحض المترتبة على روابطها المنطقية.
+      </p>
+      <div class="logic-symbols">
+        <div class="logic-sym"><span class="ls-sym">T</span><span class="ls-ar">صادقة</span></div>
+        <div class="logic-sym"><span class="ls-sym">F</span><span class="ls-ar">كاذبة</span></div>
+        <div class="logic-sym"><span class="ls-sym">N</span><span class="ls-ar">لا تحديد</span></div>
+        <div class="logic-sym"><span class="ls-sym">σ</span><span class="ls-ar">وضع / سيناريو</span></div>
+        <div class="logic-sym"><span class="ls-sym">⊩</span><span class="ls-ar">يُحقَّق في</span></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- CHAPTER 27 -->
+  <article class="chapter anim-fade-up" id="ch27">
+    <div class="chapter-header">
+      <div class="ch-number">٢٧</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">من التقييم إلى الاستنباط</div>
+        <div class="ch-title-en">From Evaluation to Deduction</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        يُظهر تينانت أن قواعد الاستنباط المنطقي يمكن اشتقاقها مباشرة من قواعد التحقق والإبطال الدلالية — مما يجعل المنطق والدلالة متشابكين بعمق. وهذا ما يُسمى الانسجام (harmony) بين قواعد الإدخال والإخراج لكل رابط منطقي.
+      </p>
+    </div>
+  </article>
+
+  <!-- CHAPTER 28 -->
+  <article class="chapter anim-fade-up" id="ch28">
+    <div class="chapter-header">
+      <div class="ch-number">٢٨</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">المفارقات</div>
+        <div class="ch-title-en">Paradoxes</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        المفارقة استدلال صالح الشكل تبدو مقدماته معقولة ونتيجته مستحيلة — وهي لحظات يتشقق فيها التفكير العادي كاشفاً حدوده. يُصنّف تينانت المفارقات في أربعة أصناف:
+      </p>
+
+      <!-- Paradox categories -->
+      <div class="diagram-wrap">
+        <div class="diagram-caption">أصناف المفارقات وأبرز أمثلتها</div>
+        <div class="diagram-body">
+          <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" width="600" height="360">
+            <!-- Category 1: Inductive paradoxes -->
+            <rect x="10" y="10" width="275" height="155" rx="5" fill="#2e2820" stroke="#c9a84c" stroke-width="1.2"/>
+            <text x="147" y="35" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#c9a84c" font-weight="700">مفارقات الاستقراء</text>
+            <text x="147" y="52" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">Inductive Paradoxes</text>
+            <text x="147" y="75" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">◆ مفارقة هيمبل (الغربان)</text>
+            <text x="147" y="97" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#6e6050">أي دليل على «ما ليس غراباً ليس أسود»</text>
+            <text x="147" y="113" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#6e6050">يُعدّ دليلاً على «الغربان سود»!</text>
+            <text x="147" y="135" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">◆ مفارقة غودمان (grue)</text>
+            <text x="147" y="153" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#6e6050">اللغز الجديد للاستقراء</text>
+
+            <!-- Category 2: Sorites -->
+            <rect x="315" y="10" width="275" height="155" rx="5" fill="#2e2820" stroke="#9b2d42" stroke-width="1.2"/>
+            <text x="452" y="35" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#9b2d42" font-weight="700">مفارقة سوريتس</text>
+            <text x="452" y="52" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#6b1d2e">Sorites (Heap) Paradox</text>
+            <text x="452" y="80" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">حبة رمل واحدة لا تصنع كومة</text>
+            <text x="452" y="99" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">إضافة حبة لكومة لا تزيلها</text>
+            <text x="452" y="120" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">∴ لا توجد كومة رمال!</text>
+            <text x="452" y="145" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#6e6050">مشكلة الغموض المتدرّج في اللغة</text>
+
+            <!-- Category 3: Logical paradoxes -->
+            <rect x="10" y="185" width="275" height="155" rx="5" fill="#2e2820" stroke="#2a8a9e" stroke-width="1.2"/>
+            <text x="147" y="210" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#2a8a9e" font-weight="700">المفارقات المنطقية/الدلالية</text>
+            <text x="147" y="228" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#1a5f6e">Logical/Semantic Paradoxes</text>
+            <text x="147" y="252" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">◆ مفارقة الكاذب</text>
+            <text x="147" y="270" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#6e6050">«هذه الجملة كاذبة» — صادقة أم كاذبة؟</text>
+            <text x="147" y="292" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">◆ مفارقة راسل</text>
+            <text x="147" y="310" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#6e6050">مجموعة كل المجموعات التي لا تنتمي لنفسها</text>
+            <text x="147" y="328" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#6e6050">أزمة في أسس الرياضيات</text>
+
+            <!-- Category 4: Mathematical -->
+            <rect x="315" y="185" width="275" height="155" rx="5" fill="#2e2820" stroke="#c9a84c" stroke-width="1.2"/>
+            <text x="452" y="210" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#c9a84c" font-weight="700">المفارقات الرياضية</text>
+            <text x="452" y="228" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">Mathematical Paradoxes</text>
+            <text x="452" y="252" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">◆ مفارقة زينون (الحركة)</text>
+            <text x="452" y="270" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#6e6050">لا يمكن الوصول لأي هدف — نقاط لا نهائية</text>
+            <text x="452" y="292" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#a89880">◆ مفارقة راسل</text>
+            <text x="452" y="310" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#6e6050">مجموعة كل المجموعات غير المنتمية لنفسها</text>
+            <text x="452" y="328" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#6e6050">بورالي-فورتي، سكولم</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="pull-quote">
+        «المفارقة ليست خطأً في الاستدلال — بل هي ضغط الواقع على حدود مفاهيمنا. حين تنكشف مفارقة نحن أمام فرصة لإعادة بناء نظرتنا للعالم.»
+      </div>
+    </div>
+  </article>
+
+  <!-- CHAPTER 29 -->
+  <article class="chapter anim-fade-up" id="ch29">
+    <div class="chapter-header">
+      <div class="ch-number">٢٩</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">الوصف مقابل الاستنباط: تصادم المُثُل</div>
+        <div class="ch-title-en">Description v. Deduction: The Clash of Ideals</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        يطرح تينانت مبرهنة اللاتجميع (Noncompossibility Theorem): لا يمكن لنظام رسمي أن يكون في آنٍ واحد كاملاً (يُثبت كل الحقائق) ومتسقاً (لا يُثبت أي تناقض) وقاطعاً (يُحدد صدق كل جملة). هذا ما سبق أن أثبته غودل بصورة مختلفة.
+      </p>
+    </div>
+  </article>
+
+  <!-- CHAPTER 30 -->
+  <article class="chapter anim-fade-up" id="ch30">
+    <div class="chapter-header">
+      <div class="ch-number">٣٠</div>
+      <div class="ch-titles">
+        <div class="ch-title-ar">عدم اكتمال الحساب — مبرهنة غودل</div>
+        <div class="ch-title-en">The Incompleteness of Arithmetic</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        في عام ١٩٣١ أثبت كورت غودل مبرهنته الشهيرة في عدم الاكتمال التي زعزعت الأسس الرياضية: أي نظام رسمي متسق يحوي حساب الأعداد الطبيعية يُمكن بناء جملة فيه صادقة لكنها غير قابلة للإثبات داخل النظام نفسه.
+      </p>
+
+      <!-- Gödel's incompleteness diagram -->
+      <div class="diagram-wrap">
+        <div class="diagram-caption">مبرهنة غودل في عدم الاكتمال</div>
+        <div class="diagram-body">
+          <svg viewBox="0 0 540 290" xmlns="http://www.w3.org/2000/svg" width="540" height="290">
+            <!-- System box -->
+            <rect x="70" y="30" width="400" height="210" rx="6" fill="rgba(201,168,76,0.04)" stroke="#c9a84c" stroke-width="1.5" stroke-dasharray="8,5"/>
+            <text x="270" y="55" text-anchor="middle" font-family="Amiri,serif" font-size="13" fill="#c9a84c">نظام رسمي F — متسق وقادر على التعبير عن الحساب</text>
+
+            <!-- Provable truths circle -->
+            <circle cx="220" cy="145" r="70" fill="rgba(42,138,158,0.08)" stroke="#2a8a9e" stroke-width="1.2"/>
+            <text x="220" y="135" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#2a8a9e" font-weight="700">القضايا القابلة</text>
+            <text x="220" y="152" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#2a8a9e" font-weight="700">للإثبات</text>
+            <text x="220" y="169" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#1a5f6e">Provable Theorems</text>
+
+            <!-- True sentences circle -->
+            <circle cx="320" cy="145" r="80" fill="rgba(201,168,76,0.06)" stroke="#c9a84c" stroke-width="1.2"/>
+            <text x="360" y="135" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#c9a84c" font-weight="700">القضايا الصادقة</text>
+            <text x="360" y="152" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">True Sentences</text>
+
+            <!-- Gödel sentence -->
+            <circle cx="390" cy="145" r="16" fill="rgba(107,29,46,0.3)" stroke="#9b2d42" stroke-width="1.5"/>
+            <text x="390" y="142" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#9b2d42" font-weight="700">G</text>
+            <text x="390" y="157" text-anchor="middle" font-family="Cinzel,serif" font-size="7" fill="#6b1d2e">Gödel</text>
+
+            <!-- Arrow pointing to G -->
+            <path d="M 430 95 Q 415 115 404 133" stroke="#9b2d42" stroke-width="1.2" fill="none" marker-end="url(#arr2)"/>
+            <text x="445" y="85" text-anchor="middle" font-family="Amiri,serif" font-size="11" fill="#9b2d42">جملة غودل G:</text>
+            <text x="445" y="101" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#a89880">«هذه الجملة لا يمكن إثباتها»</text>
+
+            <!-- Footer note -->
+            <text x="270" y="260" text-anchor="middle" font-family="Amiri,serif" font-size="12" fill="#c9a84c">G صادقة، لكن لا يمكن إثباتها ضمن F</text>
+            <text x="270" y="278" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">G is true but unprovable within F — Gödel 1931</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="concept-box">
+        <div class="concept-label">دلالة مبرهنة غودل الفلسفية</div>
+        <p>
+          تضرب مبرهنة غودل ضربة عميقة لحلم هيلبرت بتأسيس الرياضيات على نظام شامل ومتسق. وتُثير سؤالاً فلسفياً خطيراً: هل العقل البشري يتجاوز حدود أي نظام رسمي؟ وهل يدل ذلك على أن العقل ليس مجرد حاسوب؟ (حجة لوكاس-بنروز) — وهي حجة مثيرة للجدل حتى اليوم.
+        </p>
+      </div>
+
+      <div class="discussion-block">
+        <div class="discussion-header">أسئلة للنقاش والتأمل</div>
+        <ul class="discussion-list">
+          <li>هل تُثبت مبرهنة غودل أن العقل البشري أقوى من أي نظام حاسوبي؟ أم أن هذا الاستنتاج متسرّع؟</li>
+          <li>ما الذي تكشفه مفارقة الكاذب عن طبيعة اللغة والمرجعية الذاتية؟</li>
+          <li>هل اللاحتمية الكمية تفتح مجالاً جديداً للإرادة الحرة، أم أنها تستبدل الحتمية بالعشوائية المجردة؟</li>
+          <li>كيف تؤثر مبرهنة اللاتجميع على إمكانية نظرية معرفية شاملة؟</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+</section>
+
+<!-- ══════════════════════════════════════════
+     APPENDICES
+══════════════════════════════════════════ -->
+<section class="appendix-section anim-fade-up" id="appA">
+  <div class="part-header">
+    <div class="part-label">ملحق أ</div>
+    <div class="part-title-ar">تاريخ الفلسفة الغربية</div>
+    <div class="part-title-en">The History of Western Philosophy</div>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-caption">خط زمني شامل — الفلاسفة الغربيون الكبار</div>
+    <div class="diagram-body">
+      <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" width="700" height="300">
+        <!-- Timeline spine -->
+        <line x1="30" y1="150" x2="680" y2="150" stroke="#3e3428" stroke-width="2"/>
+        <polygon points="680,145 695,150 680,155" fill="#c9a84c"/>
+
+        <!-- Era brackets -->
+        <rect x="30" y="250" width="170" height="25" rx="3" fill="rgba(201,168,76,0.07)" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+        <text x="115" y="267" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">ANCIENT · ٦٠٠ق.م — ٤٠٠م</text>
+
+        <rect x="210" y="250" width="155" height="25" rx="3" fill="rgba(42,138,158,0.07)" stroke="rgba(42,138,158,0.2)" stroke-width="1"/>
+        <text x="287" y="267" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#1a5f6e">MEDIEVAL · ٤٠٠ — ١٤٠٠م</text>
+
+        <rect x="375" y="250" width="120" height="25" rx="3" fill="rgba(107,29,46,0.07)" stroke="rgba(107,29,46,0.2)" stroke-width="1"/>
+        <text x="435" y="267" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#6b1d2e">EARLY MOD. · ١٦٠٠–١٨٠٠</text>
+
+        <rect x="505" y="250" width="165" height="25" rx="3" fill="rgba(201,168,76,0.07)" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+        <text x="587" y="267" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#8a6e2f">MODERN · ١٨٠٠م — الآن</text>
+
+        <!-- Ancient philosophers (above line) -->
+        <g>
+          <line x1="55" y1="150" x2="55" y2="110" stroke="#c9a84c" stroke-width="1"/><circle cx="55" cy="150" r="4" fill="#c9a84c"/>
+          <text x="55" y="100" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#e8e0d0">طاليس</text>
+          <text x="55" y="114" text-anchor="middle" font-family="Cinzel,serif" font-size="7" fill="#8a6e2f">Thales</text>
+        </g>
+        <g>
+          <line x1="90" y1="150" x2="90" y2="185" stroke="#c9a84c" stroke-width="1"/><circle cx="90" cy="150" r="4" fill="#c9a84c"/>
+          <text x="90" y="198" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#e8e0d0">سقراط</text>
+        </g>
+        <g>
+          <line x1="115" y1="150" x2="115" y2="110" stroke="#9b2d42" stroke-width="1"/><circle cx="115" cy="150" r="4" fill="#9b2d42"/>
+          <text x="115" y="100" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#e8e0d0">أفلاطون</text>
+        </g>
+        <g>
+          <line x1="150" y1="150" x2="150" y2="185" stroke="#9b2d42" stroke-width="1"/><circle cx="150" cy="150" r="4" fill="#9b2d42"/>
+          <text x="150" y="198" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#e8e0d0">أرسطو</text>
+        </g>
+        <g>
+          <line x1="190" y1="150" x2="190" y2="110" stroke="#c9a84c" stroke-width="1"/><circle cx="190" cy="150" r="3.5" fill="#c9a84c"/>
+          <text x="190" y="100" text-anchor="middle" font-family="Amiri,serif" font-size="9" fill="#a89880">أبيقور</text>
+        </g>
+
+        <!-- Medieval -->
+        <g>
+          <line x1="235" y1="150" x2="235" y2="185" stroke="#2a8a9e" stroke-width="1"/><circle cx="235" cy="150" r="4" fill="#2a8a9e"/>
+          <text x="235" y="198" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#e8e0d0">أنسيلم</text>
+        </g>
+        <g>
+          <line x1="270" y1="150" x2="270" y2="110" stroke="#2a8a9e" stroke-width="1"/><circle cx="270" cy="150" r="4" fill="#2a8a9e"/>
+          <text x="270" y="100" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#e8e0d0">أكويناس</text>
+        </g>
+        <g>
+          <line x1="310" y1="150" x2="310" y2="185" stroke="#c9a84c" stroke-width="1"/><circle cx="310" cy="150" r="3.5" fill="#c9a84c"/>
+          <text x="310" y="198" text-anchor="middle" font-family="Amiri,serif" font-size="9" fill="#a89880">اوكام</text>
+        </g>
+
+        <!-- Early Modern -->
+        <g>
+          <line x1="390" y1="150" x2="390" y2="110" stroke="#9b2d42" stroke-width="1"/><circle cx="390" cy="150" r="4" fill="#9b2d42"/>
+          <text x="390" y="100" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#e8e0d0">ديكارت</text>
+        </g>
+        <g>
+          <line x1="420" y1="150" x2="420" y2="185" stroke="#9b2d42" stroke-width="1"/><circle cx="420" cy="150" r="3.5" fill="#9b2d42"/>
+          <text x="420" y="198" text-anchor="middle" font-family="Amiri,serif" font-size="9" fill="#a89880">ليبنتز</text>
+        </g>
+        <g>
+          <line x1="455" y1="150" x2="455" y2="110" stroke="#c9a84c" stroke-width="1"/><circle cx="455" cy="150" r="4" fill="#c9a84c"/>
+          <text x="455" y="100" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#e8e0d0">هيوم</text>
+        </g>
+        <g>
+          <line x1="488" y1="150" x2="488" y2="185" stroke="#c9a84c" stroke-width="1"/><circle cx="488" cy="150" r="4" fill="#c9a84c"/>
+          <text x="488" y="198" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#e8e0d0">كانط</text>
+        </g>
+
+        <!-- Modern -->
+        <g>
+          <line x1="520" y1="150" x2="520" y2="110" stroke="#9b2d42" stroke-width="1"/><circle cx="520" cy="150" r="3.5" fill="#9b2d42"/>
+          <text x="520" y="100" text-anchor="middle" font-family="Amiri,serif" font-size="9" fill="#a89880">فريغه</text>
+        </g>
+        <g>
+          <line x1="548" y1="150" x2="548" y2="185" stroke="#2a8a9e" stroke-width="1"/><circle cx="548" cy="150" r="4" fill="#2a8a9e"/>
+          <text x="548" y="198" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#e8e0d0">راسل</text>
+        </g>
+        <g>
+          <line x1="578" y1="150" x2="578" y2="110" stroke="#2a8a9e" stroke-width="1"/><circle cx="578" cy="150" r="4" fill="#2a8a9e"/>
+          <text x="578" y="100" text-anchor="middle" font-family="Amiri,serif" font-size="10" fill="#e8e0d0">فتغنشتاين</text>
+        </g>
+        <g>
+          <line x1="615" y1="150" x2="615" y2="185" stroke="#c9a84c" stroke-width="1"/><circle cx="615" cy="150" r="3.5" fill="#c9a84c"/>
+          <text x="615" y="198" text-anchor="middle" font-family="Amiri,serif" font-size="9" fill="#a89880">كواين</text>
+        </g>
+        <g>
+          <line x1="648" y1="150" x2="648" y2="110" stroke="#c9a84c" stroke-width="1"/><circle cx="648" cy="150" r="3.5" fill="#c9a84c"/>
+          <text x="648" y="100" text-anchor="middle" font-family="Amiri,serif" font-size="9" fill="#a89880">راولز</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="appendix-section anim-fade-up" id="appB">
+  <div class="part-header">
+    <div class="part-label">ملحق ب</div>
+    <div class="part-title-ar">نتائج رسمية في نظرية الاحتمال</div>
+    <div class="part-title-en">Formal Results in the Theory of Probability</div>
+  </div>
+
+  <div class="chapter-body">
+    <p>تُوظَّف نظرية الاحتمال في الفلسفة لتحليل الاستدلال العلمي والقرار العقلاني.</p>
+
+    <div class="logic-symbols">
+      <div class="logic-sym"><span class="ls-sym">P(A)</span><span class="ls-ar">احتمال A</span></div>
+      <div class="logic-sym"><span class="ls-sym">P(A|B)</span><span class="ls-ar">شرطي</span></div>
+      <div class="logic-sym"><span class="ls-sym">P(A∧B)</span><span class="ls-ar">التقاطع</span></div>
+      <div class="logic-sym"><span class="ls-sym">P(A∨B)</span><span class="ls-ar">الاتحاد</span></div>
+    </div>
+
+    <div class="argument-block">
+      <div class="arg-title">مبرهنة بايز — Bayes' Theorem</div>
+      <div class="arg-line"><div class="arg-num">ت</div><div>P(H|E) = P(E|H) × P(H) / P(E)</div></div>
+      <div class="arg-line"><div class="arg-num">أي</div><div>الاحتمال البعدي للفرضية = الاحتمال القبلي × معدّل اللزوم ÷ احتمال الدليل</div></div>
+      <div class="arg-line conclusion"><div class="arg-num">تطبيق</div><div>تُستخدم في تحديث المعتقدات العلمية والفلسفية استناداً إلى الأدلة الجديدة</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-ornament">✦</div>
+  <div class="footer-text">
+    دليل القراءة العربي لكتاب «مدخل إلى الفلسفة: الله، العقل، العالم، والمنطق»<br>
+    تأليف نيل تينانت · نشر روتليدج / تايلور وفرانسيس · نيويورك ولندن · 2015<br>
+    <span style="color:var(--gold-dim);margin-top:0.5rem;display:block">
+      هذا الدليل رفيق مستقل للدراسة — يُلخّص أفكار الكتاب ولا يُعيد إنتاج نصوصه
+    </span>
+    <span style="font-family:'Amiri',serif;font-size:0.8rem;color:var(--text-dim);margin-top:0.8rem;display:block">
+      «الفلسفة تحرّرك من أسر الأفكار البديهية وتجعل كل ما تأخذه مسلَّماً موضع تساؤل»
+    </span>
+  </div>
+</footer>
+
+</main>
+</div><!-- end #layout -->
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════ -->
+<script>
+// ── Sidebar toggle ──────────────────────────
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+// Close sidebar when clicking a link on mobile
+document.querySelectorAll('.sidebar-ch').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 900) {
+      document.getElementById('sidebar').classList.remove('open');
+    }
+  });
+});
+
+// ── Part accordion ───────────────────────────
+function togglePart(el) {
+  const wasOpen = el.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.sidebar-part').forEach(p => p.classList.remove('open'));
+  // Toggle clicked
+  if (!wasOpen) el.classList.add('open');
+}
+
+// ── Reading progress ─────────────────────────
+function updateProgress() {
+  const main = document.getElementById('main');
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+  document.getElementById('progress-fill').style.width = pct.toFixed(1) + '%';
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
+
+// ── Intersection Observer for animations ─────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.anim-fade-up').forEach(el => observer.observe(el));
+
+// ── Active chapter highlight ──────────────────
+const chapters = Array.from(document.querySelectorAll('[id^="ch"], [id^="part"], [id^="app"]'));
+const sideLinks = document.querySelectorAll('.sidebar-ch');
+
+const chapObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      sideLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.sidebar-ch[href="#${id}"]`);
+      if (active) {
+        active.classList.add('active');
+        // Auto-open the parent part
+        const parentChaps = active.closest('.sidebar-chapters');
+        if (parentChaps) {
+          document.querySelectorAll('.sidebar-part').forEach(p => p.classList.remove('open'));
+          const parentPart = parentChaps.previousElementSibling;
+          if (parentPart) parentPart.classList.add('open');
+        }
+      }
+    }
+  });
+}, { threshold: 0.15, rootMargin: `-${72}px 0px -60% 0px` });
+
+chapters.forEach(c => chapObs.observe(c));
+
+// ── Close sidebar on outside click ───────────
+document.addEventListener('click', (e) => {
+  const sidebar = document.getElementById('sidebar');
+  const toggle = document.getElementById('menu-toggle');
+  if (window.innerWidth <= 900 && sidebar.classList.contains('open') &&
+      !sidebar.contains(e.target) && e.target !== toggle) {
+    sidebar.classList.remove('open');
+  }
+});
+</script>
+
+</body>
+</html>
